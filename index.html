@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Business Compliance Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Global Business Compliance Assistant</h1>
+        <p>Select a country to view its business regulations and compliance requirements.</p>
+        <div id="app">
+            <div class="form-group">
+                <label for="country-select">Select a Country:</label>
+                <select id="country-select">
+                    <option value="">--Please choose a country--</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="JP">Japan</option>
+                </select>
+            </div>
+            <div id="compliance-info">
+                <!-- Compliance info will be displayed here -->
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
