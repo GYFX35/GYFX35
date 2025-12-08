@@ -1,12 +1,15 @@
-- 👋 Hi, I’m @GYFX35
-- 👀 I’m interested in ... web development 
-- 🌱 I’m currently learning ... Entrepreneurship 
-- 💞️ I’m looking to collaborate on ... Global 
-- 📫 How to reach me ...https://www.linkedin.com/in/yendoukoa-gountante-7564b522b
-- 😄 Pronouns: ... yendoukoa 
-- ⚡ Fun fact: ...Games
+# Global Peace, Youth Entrepreneurship, and Wellbeing Platform
 
-<!---
-GYFX35/GYFX35 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+This project is a web-based platform dedicated to three core pillars:
+
+1.  **Global Peace and Stability:** Fostering dialogue, understanding, and collaboration to build a more peaceful world.
+2.  **Youth Entrepreneurship and Employment:** Empowering the next generation of leaders and innovators.
+3.  **Wellbeing Promotion:** Cultivating physical, mental, and social wellbeing for all.
+
+## Vision
+
+Our vision is to create a global community of individuals and organizations working together to build a better future for all.
+
+## Getting Started
+
+To get started with the project, simply open the `index.html` file in your web browser.
