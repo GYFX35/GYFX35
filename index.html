@@ -16,6 +16,8 @@
                 <li><a href="#peace">Peace & Stability</a></li>
                 <li><a href="#youth">Youth Entrepreneurship</a></li>
                 <li><a href="#wellbeing">Wellbeing</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#ai-educator">AI Educator</a></li>
             </ul>
         </nav>
     </header>
@@ -30,25 +32,67 @@
         </section>
 
         <section id="peace" class="feature">
-            <h2>Peace & Stability</h2>
-            <p>Promoting dialogue, understanding, and collaboration to build a more peaceful and stable world.</p>
+            <div class="feature-content">
+                <h2>Peace & Stability</h2>
+                <p>Promoting dialogue, understanding, and collaboration to build a more peaceful and stable world.</p>
+            </div>
         </section>
 
         <section id="youth" class="feature">
-            <h2>Youth Entrepreneurship & Employment</h2>
-            <p>Empowering the next generation of leaders and innovators with the skills and resources they need to succeed.</p>
+            <div class="feature-content">
+                <h2>Youth Entrepreneurship & Employment</h2>
+                <p>Empowering the next generation of leaders and innovators with the skills and resources they need to succeed.</p>
+            </div>
         </section>
 
         <section id="wellbeing" class="feature">
-            <h2>Wellbeing Promotion</h2>
-            <p>Cultivating a culture of physical, mental, and social wellbeing for individuals and communities worldwide.</p>
+            <div class="feature-content">
+                <h2>Wellbeing Promotion</h2>
+                <p>Cultivating a culture of physical, mental, and social wellbeing for individuals and communities worldwide.</p>
+            </div>
+        </section>
+
+        <section id="resources" class="feature">
+            <div class="feature-content">
+                <h2>Resources</h2>
+                <p>Access a curated collection of articles, tools, and organizations dedicated to our core pillars.</p>
+                <!-- Add resource links here -->
+            </div>
+        </section>
+
+        <section id="ai-educator" class="feature">
+            <div class="feature-content">
+                <h2>AI Educator</h2>
+                <p>Ask our AI assistant questions about global peace, youth entrepreneurship, and wellbeing.</p>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Global Peace, Youth Entrepreneurship, and Wellbeing. All rights reserved.</p>
+        <p>&copy; 2023 Global Peace, Youth Entrepreneurship, and Wellbeing. All rights reserved. | <a href="LICENSE">MIT License</a></p>
     </footer>
 
+    <!-- AI Educator Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chatbot-icon">
+            <img src="https://img.icons8.com/color/48/000000/bot.png" alt="Chatbot Icon">
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <h3>AI Educator</h3>
+                <button class="chatbot-close">&times;</button>
+            </div>
+            <div class="chatbot-body">
+                <div class="chatbot-messages"></div>
+                <div class="chatbot-input">
+                    <input type="text" placeholder="Ask a question...">
+                    <button>Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="chatbot.js"></script>
 </body>
 </html>
