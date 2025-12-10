@@ -1,14 +1,66 @@
+/* Basic CSS Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
 body {
-    font-family: sans-serif;
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Original Styles with Enhancements */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     background-color: #f4f4f4;
     color: #333;
+    line-height: 1.6;
 }
 
 header {
     background-color: #fff;
     padding: 1rem;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 nav {
@@ -17,6 +69,7 @@ nav {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .logo a {
@@ -41,12 +94,22 @@ nav ul li a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+main {
+    padding-top: 80px; /* Adjust for fixed header */
 }
 
 .hero {
     background-color: #333;
     color: #fff;
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
     text-align: center;
 }
 
@@ -72,7 +135,15 @@ nav ul li a {
     padding: 1rem 2rem;
     text-decoration: none;
     font-weight: bold;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
     border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #007bff;
+    color: #fff;
 }
 
 .feature {
@@ -91,5 +162,39 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 1rem;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 1rem;
+    }
+
+    nav ul li {
+        margin: 0 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
 }
