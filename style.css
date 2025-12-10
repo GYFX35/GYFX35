@@ -94,41 +94,30 @@ footer {
     padding: 1rem;
 }
 
-.forum-container {
+
+.data-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
-.forum-form {
-    width: 30%;
-}
-
-#posts-container {
-    width: 65%;
-}
-
-.forum-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.forum-form input,
-.forum-form textarea {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.post {
+.data-point {
     background-color: #fff;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 4px;
-    margin-bottom: 1rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
 }
 
-.post h3 {
-    margin: 0 0 0.5rem 0;
+.data-point h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+}
+
+.data-point p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
 }
