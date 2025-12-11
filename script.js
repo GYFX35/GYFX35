@@ -35,3 +35,22 @@ shareButtons.forEach(button => {
         window.open(shareUrl, 'Share', 'width=600,height=400');
     });
 });
+
+// Crowdfunding progress bar
+function updateProgressBar() {
+    const amountRaisedEl = document.getElementById('amount-raised');
+    const goalAmountEl = document.getElementById('goal-amount');
+    const progressBar = document.getElementById('crowdfunding-progress');
+
+    // Get the numerical values from the text content
+    const amountRaised = parseFloat(amountRaisedEl.textContent.replace('$', '').replace(',', ''));
+    const goalAmount = parseFloat(goalAmountEl.textContent.replace('$', '').replace(',', ''));
+
+    if (!isNaN(amountRaised) && !isNaN(goalAmount) && goalAmount > 0) {
+        const percentage = (amountRaised / goalAmount) * 100;
+        progressBar.style.width = `${percentage}%`;
+    }
+}
+
+// Update the progress bar when the page loads
+document.addEventListener('DOMContentLoaded', updateProgressBar);
