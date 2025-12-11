@@ -144,6 +144,17 @@ nav ul li a {
     background-color: #0077b5;
 }
 
+.sponsor-logos {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.sponsor-logos img {
+    max-width: 150px;
+}
+
 footer {
     background-color: #333;
     color: #fff;
