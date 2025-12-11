@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Peace, Youth Entrepreneurship, and Wellbeing</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <a href="#">GPW</a>
-            </div>
+            <div class="logo"><a href="#">GPW</a></div>
             <ul>
                 <li><a href="#peace">Peace & Stability</a></li>
                 <li><a href="#youth">Youth Entrepreneurship</a></li>
                 <li><a href="#wellbeing">Wellbeing</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#ai-educator">AI Educator</a></li>
             </ul>
         </nav>
     </header>
@@ -24,31 +25,60 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Building a Better World Together</h1>
-                <p>A platform dedicated to fostering global peace, empowering youth, and promoting wellbeing for all.</p>
+                <p>A platform for global peace, youth empowerment, and wellbeing.</p>
                 <a href="#" class="cta-button">Join the Movement</a>
             </div>
         </section>
 
-        <section id="peace" class="feature">
-            <h2>Peace & Stability</h2>
-            <p>Promoting dialogue, understanding, and collaboration to build a more peaceful and stable world.</p>
+        <section id="inspiration" class="feature-alt">
+            <h2>Quote of the Day</h2>
+            <blockquote id="daily-quote">
+                <p>"The best way to predict the future is to create it."</p>
+                <footer>- Peter Drucker</footer>
+            </blockquote>
         </section>
 
-        <section id="youth" class="feature">
-            <h2>Youth Entrepreneurship & Employment</h2>
-            <p>Empowering the next generation of leaders and innovators with the skills and resources they need to succeed.</p>
+        <section id="good-news" class="feature">
+            <h2>Good News Feed</h2>
+            <div id="news-container"><p>Loading news...</p></div>
         </section>
 
-        <section id="wellbeing" class="feature">
-            <h2>Wellbeing Promotion</h2>
-            <p>Cultivating a culture of physical, mental, and social wellbeing for individuals and communities worldwide.</p>
+        <section id="global-map" class="feature-alt">
+            <h2>Global Youth Unemployment</h2>
+            <div id="map" style="height: 500px; width: 100%;"></div>
         </section>
+
+        <section id="unesco-data" class="feature">
+            <h2>Global Youth Literacy</h2>
+            <p>Youth literacy is a key indicator of educational success. The data below from UNESCO shows an estimated global average literacy rate for the population aged 15-24.</p>
+            <div id="literacy-rate-container"><p>Loading data...</p></div>
+        </section>
+
+        <section id="youth" class="feature-alt">
+            <h2>Youth Entrepreneurship Resource Hub</h2>
+            <div class="resource-hub">
+                <!-- Resource links here -->
+            </div>
+        </section>
+
+        <section id="ai-educator" class="feature">
+            <h2>AI Educator</h2>
+            <p>Ask our AI assistant about global peace, youth entrepreneurship, and wellbeing.</p>
+        </section>
+
     </main>
 
     <footer>
-        <p>&copy; 2023 Global Peace, Youth Entrepreneurship, and Wellbeing. All rights reserved.</p>
+        <p>&copy; 2023 GPW. All rights reserved. | <a href="LICENSE">MIT License</a></p>
     </footer>
 
-    <script src="script.js"></script>
+    <div class="chatbot-container">
+        <!-- Chatbot implementation -->
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js" defer></script>
+    <script src="chatbot.js" defer></script>
+    <script src="map.js" defer></script>
 </body>
 </html>
