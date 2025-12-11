@@ -1,14 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap');
+
 body {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #f8f9fa;
+    color: #34495e;
+    line-height: 1.6;
 }
 
 header {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 nav {
@@ -17,13 +24,14 @@ nav {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .logo a {
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.5rem;
-    color: #333;
+    font-size: 1.8rem;
+    color: #2c3e50;
 }
 
 nav ul {
@@ -39,14 +47,23 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #2c3e50;
     font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #3498db;
+}
+
+main {
+    padding-top: 80px;
 }
 
 .hero {
-    background-color: #333;
-    color: #fff;
-    padding: 4rem 2rem;
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: #ffffff;
+    padding: 6rem 2rem;
     text-align: center;
 }
 
@@ -56,23 +73,29 @@ nav ul li a {
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 2rem;
 }
 
 .cta-button {
     display: inline-block;
-    background-color: #fff;
-    color: #333;
-    padding: 1rem 2rem;
+    background-color: #27ae60;
+    color: #ffffff;
+    padding: 1rem 2.5rem;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 4px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #229954;
 }
 
 .feature {
@@ -82,14 +105,51 @@ nav ul li a {
     margin: 0 auto;
 }
 
+.feature:nth-child(odd) {
+    background-color: #ffffff;
+}
+
 .feature h2 {
-    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact-form input,
+#contact-form textarea {
     margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#contact-form button {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: #2980b9;
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #34495e;
+    color: #ecf0f1;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 1rem;
 }
