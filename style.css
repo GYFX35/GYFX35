@@ -87,6 +87,30 @@ nav ul li a {
     margin-bottom: 1rem;
 }
 
+.data-section {
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+
+.data-section h2 {
+    color: #333;
+}
+
+#world-bank-container div,
+#github-container div,
+#eurostat-container div {
+    margin-bottom: 0.5rem;
+}
+
+#github-container a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+#github-container a:hover {
+    text-decoration: underline;
+}
+
 footer {
     background-color: #333;
     color: #fff;
