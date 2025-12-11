@@ -9,23 +9,7 @@
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">
-                <a href="index.html">GPW</a>
-            </div>
-            <ul>
-                <li><a href="index.html#peace">Peace & Stability</a></li>
-                <li><a href="index.html#youth">Youth Entrepreneurship</a></li>
-                <li><a href="index.html#wellbeing">Wellbeing</a></li>
-                <li><a href="agriculture.html">Agriculture</a></li>
-                <li><a href="environment.html">Environment</a></li>
-                <li><a href="health.html">Health</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="games.html">Games</a></li>
-                <li><a href="worldbank.html">World Bank Data</a></li>
-                <li><a href="apis.html">International Data</a></li>
-            </ul>
-        </nav>
+        <div id="main-nav"></div>
     </header>
 
     <main>
@@ -35,8 +19,30 @@
         </section>
 
         <section id="eurostat-data" class="data-section feature">
-            <h3>Eurostat Data</h3>
+            <h3>Eurostat Data (European Union)</h3>
             <div class="data-container"></div>
+            <p class="note">Note: Live integration for Eurostat data is currently facing technical issues (CORS). The data displayed here is a sample for demonstration purposes.</p>
+        </section>
+
+        <section id="au-data" class="data-section feature">
+            <h3>African Union (AU) Data</h3>
+            <div class="data-container">
+                <p>Research was conducted to find a suitable public data API from the African Union. The available data portals, such as the Pan-African Parliament's open data portal, focus on legislative and administrative documents rather than statistical data relevant to this project's themes. The ECAStats portal, while promising, does not yet have a publicly accessible REST API. Therefore, direct integration of AU data is not currently feasible.</p>
+            </div>
+        </section>
+
+        <section id="undp-data" class="data-section feature">
+            <h3>United Nations Development Programme (UNDP) Data</h3>
+            <div class="data-container">
+                <p>An extensive search for a UNDP public data API was performed. While an API was discovered at open.undp.org, it appears to be outdated or discontinued, as attempts to access it resulted in errors. Without a functional and documented public API, a live data integration for UNDP could not be implemented.</p>
+            </div>
+        </section>
+
+        <section id="azure-data" class="data-section feature">
+            <h3>Microsoft Azure Data</h3>
+            <div class="data-container">
+                <p>The Microsoft Azure platform offers a service called Azure Open Datasets. However, this service is designed for use within the Azure cloud environment for machine learning and data analytics, and does not provide a direct, queryable web API suitable for integration into this website. Therefore, a live data feed from Azure Open Datasets could not be established.</p>
+            </div>
         </section>
     </main>
 
@@ -44,6 +50,7 @@
         <p>&copy; 2023 Global Peace, Youth Entrepreneurship, and Wellbeing. All rights reserved.</p>
     </footer>
 
+    <script src="navigation.js"></script>
     <script src="apis.js"></script>
 </body>
 </html>
