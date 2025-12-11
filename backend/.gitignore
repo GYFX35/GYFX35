@@ -1,2 +1,6 @@
 node_modules
+.env
 service-account.json
+db.json
+server.log
+database.db

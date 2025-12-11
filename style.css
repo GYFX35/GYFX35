@@ -16,17 +16,19 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    background-color: #f8f9fa;
-    color: #2d3748;
+    background-color: #ffffff; /* White background */
+    color: #333333; /* Dark gray for text */
 }
 
 header {
-    background-color: transparent;
+    background-color: #ffffff; /* White header background */
     padding: 1.5rem;
-    position: absolute;
+    position: sticky;
+    top: 0;
     width: 100%;
     z-index: 10;
     box-sizing: border-box;
+    border-bottom: 1px solid #e0e0e0; /* Light gray border */
 }
 
 nav {
@@ -42,7 +44,7 @@ nav {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.8rem;
-    color: #ffffff;
+    color: #007bff; /* Blue logo text */
 }
 
 nav ul {
@@ -58,18 +60,18 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #ffffff;
+    color: #333333; /* Dark gray nav links */
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #e2e8f0;
+    color: #007bff; /* Blue hover for nav links */
 }
 
 .hero {
-    background: linear-gradient(45deg, #0052D4, #4364F7, #6FB1FC);
-    color: #ffffff;
+    background-color: #f0f8ff; /* Light blue hero background */
+    color: #333333; /* Dark gray text */
     padding: 8rem 2rem;
     text-align: center;
     position: relative;
@@ -89,12 +91,12 @@ nav ul li a:hover {
 .hero p {
     font-size: 1.25rem;
     margin-bottom: 2.5rem;
-    color: #e2e8f0;
+    color: #555555; /* Medium gray text */
 }
 
 .cta-button {
     display: inline-block;
-    background-color: #17a2b8;
+    background-color: #007bff; /* Blue CTA button */
     color: #ffffff;
     padding: 1rem 2.5rem;
     text-decoration: none;
@@ -104,7 +106,7 @@ nav ul li a:hover {
 }
 
 .cta-button:hover {
-    background-color: #138496;
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
 .feature {
@@ -112,8 +114,8 @@ nav ul li a:hover {
     text-align: center;
     max-width: 1000px;
     margin: 0 auto;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
+    background-color: #ffffff; /* White feature sections */
+    border-bottom: 1px solid #e0e0e0; /* Light gray border */
 }
 
 .feature:last-of-type {
@@ -123,12 +125,12 @@ nav ul li a:hover {
 .feature h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: #1a202c;
+    color: #333333; /* Dark gray headings */
 }
 
 footer {
-    background-color: #1a202c;
-    color: #e2e8f0;
+    background-color: #333333; /* Dark gray footer */
+    color: #ffffff; /* White text */
     text-align: center;
     padding: 2rem;
 }
@@ -145,7 +147,7 @@ footer {
 }
 
 #chatbot-header {
-    background-color: #333;
+    background-color: #007bff; /* Blue chatbot header */
     color: #fff;
     padding: 1rem;
     border-top-left-radius: 10px;
@@ -196,7 +198,7 @@ footer {
 }
 
 #chatbot-send {
-    background-color: #333;
+    background-color: #007bff; /* Blue send button */
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
@@ -222,7 +224,7 @@ footer {
 }
 
 #feedback-submit {
-    background-color: #333;
+    background-color: #007bff; /* Blue feedback button */
     color: #fff;
     border: none;
     padding: 1rem 2rem;
@@ -237,4 +239,28 @@ footer {
     background-color: #f0f0f0;
     max-width: 800px;
     text-align: left;
+}
+
+#signup-form, #login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#signup-form input, #login-form input {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#signup-form button, #login-form button {
+    background-color: #007bff; /* Blue auth buttons */
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
 }

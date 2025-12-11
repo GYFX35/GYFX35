@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('token');
+    const loginLink = document.getElementById('login-link');
+    const signupLink = document.getElementById('signup-link');
+    const logoutLink = document.getElementById('logout-link');
+
+    if (token) {
+        loginLink.style.display = 'none';
+        signupLink.style.display = 'none';
+        logoutLink.style.display = 'inline-block';
+    } else {
+        loginLink.style.display = 'inline-block';
+        signupLink.style.display = 'inline-block';
+        logoutLink.style.display = 'none';
+    }
+
     const chatbotSendButton = document.getElementById('chatbot-send');
     const chatbotInput = document.getElementById('chatbot-input');
     const chatbotMessages = document.getElementById('chatbot-messages');

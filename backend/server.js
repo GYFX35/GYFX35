@@ -1,15 +1,17 @@
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 const express = require('express');
 const path = require('path');
 const { VertexAI } = require('@google-cloud/vertexai');
+const authRoutes = require('./auth');
 
 const app = express();
 const port = 3000;
 
-// Serve static files from the frontend
-app.use(express.static(path.join(__dirname, '..')));
-
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+// Serve static files from the frontend
+app.use(express.static(path.join(__dirname, '..')));
 
 // Initialize Vertex AI
 const vertex_ai = new VertexAI({
@@ -49,6 +51,10 @@ app.post('/api/feedback', async (req, res) => {
     res.status(500).json({ error: 'Something went wrong' });
   }
 });
+
+// Auth routes
+app.post('/api/auth/signup', authRoutes.signup);
+app.post('/api/auth/login', authRoutes.login);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
