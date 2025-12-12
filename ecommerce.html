@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talents Promotion - GPW</title>
+    <title>E-commerce - GPW</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="talents.css">
+    <link rel="stylesheet" href="ecommerce.css">
 </head>
 <body>
     <header role="banner">
@@ -20,8 +20,6 @@
                 <li><a href="arts.html">Arts</a></li>
                 <li><a href="talents.html">Talents</a></li>
                 <li><a href="entertainment.html">Entertainment</a></li>
-                <li><a href="ecommerce.html">E-commerce</a></li>
-                <li><a href="dropshipping.html">Dropshipping</a></li>
                 <li><a href="settings.html">Settings</a></li>
             </ul>
         </nav>
@@ -30,20 +28,25 @@
     <main id="main-content">
         <section class="hero">
             <div class="hero-content">
-                <h1>Showcase Your Talent</h1>
-                <p>A stage for talented individuals to shine and get discovered.</p>
+                <h1>E-commerce Platform</h1>
+                <p>Your one-stop shop for products from emerging entrepreneurs.</p>
             </div>
         </section>
 
-        <section id="talent-showcase" class="feature">
-            <h2>Talent Showcase</h2>
-            <div class="talent-container">
+        <section id="products" class="feature">
+            <h2>Featured Products</h2>
+            <div class="product-grid">
+                <!-- Product items will be dynamically inserted here -->
             </div>
         </section>
 
-        <section id="talent-shows" class="feature">
-            <h2>Upcoming Talent Shows</h2>
-            <div id="talent-shows-list">
+        <section id="ai-assistant" class="feature">
+            <h2>AI Assistant</h2>
+            <p>Ask our AI for help with product recommendations, order tracking, and more.</p>
+            <div id="chat-container">
+                <div id="chat-window"></div>
+                <input type="text" id="chat-input" placeholder="Ask a question...">
+                <button id="chat-submit">Send</button>
             </div>
         </section>
     </main>
@@ -52,6 +55,6 @@
         <p>&copy; 2025 Global Peace, Youth Entrepreneurship, and Wellbeing. All rights reserved.</p>
     </footer>
 
-    <script src="talents.js"></script>
+    <script src="ecommerce.js"></script>
 </body>
 </html>

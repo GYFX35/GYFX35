@@ -50,6 +50,36 @@ app.post('/api/feedback', async (req, res) => {
   }
 });
 
+// API endpoint for e-commerce assistant
+app.post('/api/ecommerce-assistant', async (req, res) => {
+    const { message } = req.body;
+    const prompt = `You are an e-commerce assistant. Answer the following user query about products or orders: ${message}`;
+
+    try {
+        const streamResult = await generativeModel.generateContentStream(prompt);
+        const response = await streamResult.response;
+        res.json({ response: response.candidates[0].content.parts[0].text });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+});
+
+// API endpoint for dropshipping assistant
+app.post('/api/dropshipping-assistant', async (req, res) => {
+    const { message } = req.body;
+    const prompt = `You are an assistant knowledgeable about dropshipping. Answer the following user query: ${message}`;
+
+    try {
+        const streamResult = await generativeModel.generateContentStream(prompt);
+        const response = await streamResult.response;
+        res.json({ response: response.candidates[0].content.parts[0].text });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
