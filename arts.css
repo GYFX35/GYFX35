@@ -1,0 +1,24 @@
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.artwork {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.artwork img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#exhibitions-list .exhibition {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
