@@ -29,3 +29,7 @@ This is a static website, so you can deploy it on any web server that can serve 
 ## Getting Started
 
 To get started with the project, simply open the `index.html` file in your web browser.
+
+## Packaging for Mobile and Desktop
+
+For instructions on how to package this application for Android, iOS, and as a Progressive Web App (PWA), please see the [PACKAGING.md](PACKAGING.md) file.
