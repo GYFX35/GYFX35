@@ -1,0 +1,17 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.grid-item {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.grid-item h3 {
+    margin-top: 0;
+}

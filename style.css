@@ -49,11 +49,14 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 nav ul li {
     display: inline-block;
-    margin-left: 2.5rem;
+    margin-left: 1rem;
 }
 
 nav ul li a {
@@ -61,6 +64,7 @@ nav ul li a {
     color: #ffffff;
     font-weight: 600;
     transition: color 0.3s ease;
+    font-size: 0.85rem;
 }
 
 nav ul li a:hover {
