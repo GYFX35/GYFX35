@@ -1,5 +1,7 @@
 # Payment Information
 
+**Note for Project Owner:** For developer-specific payment information, please refer to the `DEVELOPER_PAYMENTS.md` file in the root of this project. This file is not checked into version control for security reasons.
+
 ## Wire Transfer
 
 To make a payment via wire transfer, please use the following details:

@@ -3,3 +3,6 @@
 
 # Ignore dependencies
 node_modules/
+
+# Ignore sensitive payment information
+DEVELOPER_PAYMENTS.md
