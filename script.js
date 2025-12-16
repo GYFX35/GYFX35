@@ -1,3 +1,7 @@
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const feedbackForm = document.getElementById('feedback-form');
     const ideaInput = document.getElementById('idea-input');
