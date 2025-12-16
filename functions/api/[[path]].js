@@ -155,6 +155,65 @@ async function handleUserCreation(request, env) {
   }
 }
 
+async function handleVideoSubmission(request, env) {
+    if (request.method !== 'POST') {
+        return new Response('Method not allowed', { status: 405 });
+    }
+
+    try {
+        const { title, url, description } = await request.json();
+
+        // Instructions for the user:
+        // 1. Make sure you have a D1 database bound to this worker as `env.DB`.
+        // 2. Create a 'videos' table with the following schema:
+        //    CREATE TABLE videos (
+        //      id INTEGER PRIMARY KEY AUTOINCREMENT,
+        //      title TEXT NOT NULL,
+        //      url TEXT NOT NULL,
+        //      description TEXT,
+        //      submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        //    );
+
+        const { results } = await env.DB.prepare(
+            "INSERT INTO videos (title, url, description) VALUES (?, ?, ?)"
+        )
+        .bind(title, url, description)
+        .run();
+
+        return new Response(JSON.stringify({ message: 'Video submitted successfully', results }), {
+            status: 201,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    } catch (error) {
+        console.error('Error submitting video:', error);
+        return new Response(JSON.stringify({ message: 'Error submitting video', error: error.message }), {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
+async function handleGetVideos(request, env) {
+    if (request.method !== 'GET') {
+        return new Response('Method not allowed', { status: 405 });
+    }
+
+    try {
+        const { results } = await env.DB.prepare("SELECT * FROM videos ORDER BY submitted_at DESC").all();
+        return new Response(JSON.stringify(results), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    } catch (error) {
+        console.error('Error fetching videos:', error);
+        return new Response(JSON.stringify({ message: 'Error fetching videos', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
+
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -164,7 +223,14 @@ export async function onRequest(context) {
     // Route based on the path
     if (path === '/api/users') {
       return await handleUserCreation(request, env);
-    } else {
+    } else if (path === '/api/videos') {
+        if (request.method === 'GET') {
+            return await handleGetVideos(request, env);
+        } else if (request.method === 'POST') {
+            return await handleVideoSubmission(request, env);
+        }
+    }
+    else {
       return await handleApiRequest(request, env);
     }
   } catch (e) {
