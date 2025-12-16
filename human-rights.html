@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Rights - Global Peace, Youth Entrepreneurship, and Wellbeing</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="human-rights.css">
+    <link rel="manifest" href="manifest.json">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Human Rights</h1>
+                <p>Promoting and protecting the rights of all individuals.</p>
+            </div>
+        </section>
+
+        <section id="women-rights" class="feature">
+            <h2>Women's Rights</h2>
+            <p>We are committed to promoting gender equality and empowering women and girls. We advocate for policies and programs that protect women from violence, ensure their access to education and healthcare, and promote their economic and political participation.</p>
+        </section>
+
+        <section id="disability-rights" class="feature">
+            <h2>Rights of Persons with Disabilities</h2>
+            <p>We believe that persons with disabilities have the right to live with dignity, independence, and full inclusion in society. We work to raise awareness about the rights of persons with disabilities and to advocate for policies and programs that promote their inclusion.</p>
+        </section>
+
+        <section id="children-rights" class="feature">
+            <h2>Children's Rights</h2>
+            <p>We are dedicated to protecting the rights of children and ensuring that they have a safe and healthy environment in which to grow and learn. We advocate for policies and programs that protect children from abuse and exploitation, and that ensure their access to education, healthcare, and other essential services.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Global Peace, Youth Entrepreneurship, and Wellbeing. All rights reserved.</p>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+</body>
+</html>
