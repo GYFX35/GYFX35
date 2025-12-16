@@ -32,16 +32,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /*
-    videoSubmissionForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const title = document.getElementById('video-title').value;
-        const url = document.getElementById('video-url').value;
-        const description = document.getElementById('video-description').value;
-        console.log('New video submitted:', { title, url, description });
-        videoSubmissionForm.reset();
-    });
-    */
-
     populateVideoGallery();
+
+    if (videoSubmissionForm) {
+        videoSubmissionForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const videoTitle = document.getElementById('video-title').value;
+            const videoUrl = document.getElementById('video-url').value;
+
+            try {
+                const response = await fetch('/api/videos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ title: videoTitle, url: videoUrl })
+                });
+
+                if (response.ok) {
+                    alert('Video submitted successfully!');
+                    videoSubmissionForm.reset();
+                } else {
+                    alert('Failed to submit video. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error submitting video:', error);
+                alert('An error occurred while submitting the video.');
+            }
+        });
+    }
 });
