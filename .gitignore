@@ -6,3 +6,6 @@ node_modules/
 
 # Ignore sensitive payment information
 DEVELOPER_PAYMENTS.md
+
+# Ignore wrangler build artifacts
+.wrangler/

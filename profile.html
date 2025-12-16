@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings - Global Peace, Youth Entrepreneurship, and Wellbeing</title>
+    <title>User Profile - Global Peace, Youth Entrepreneurship, and Wellbeing</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -30,27 +30,33 @@
     </header>
 
     <main id="main-content">
-        <section id="settings" class="feature">
-            <h2>Settings</h2>
-            <p>Manage your preferences and settings for the platform.</p>
+        <section id="profile" class="feature">
+            <h2>User Profile</h2>
+            <div class="profile-container">
+                <div class="profile-picture">
+                    <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profile-pic">
+                    <video id="camera-stream" autoplay style="display: none;"></video>
+                    <button id="use-camera">Use Camera</button>
+                    <button id="capture" style="display: none;">Capture</button>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                </div>
+                <form id="profile-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="bio">Short Bio:</label>
+                    <textarea id="bio" name="bio"></textarea>
+                    <button type="submit">Create Account</button>
+                </form>
+            </div>
         </section>
-
-        <div id="chatbot-container">
-            <div id="chatbot-header">
-                <h2>AI Educator</h2>
-            </div>
-            <div id="chatbot-messages"></div>
-            <div id="chatbot-input-container">
-                <input type="text" id="chatbot-input" placeholder="Ask me anything...">
-                <button id="chatbot-send">Send</button>
-            </div>
-        </div>
     </main>
 
     <footer>
         <p>&copy; 2025 Global Peace, Youth Entrepreneurship, and Wellbeing. All rights reserved.</p>
     </footer>
 
-    <script src="settings.js"></script>
+    <script src="profile.js"></script>
 </body>
 </html>
