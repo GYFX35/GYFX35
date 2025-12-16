@@ -1,5 +1,6 @@
 # Ignore log files
 *.log
+server.log
 
 # Ignore dependencies
 node_modules/

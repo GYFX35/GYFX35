@@ -23,6 +23,7 @@ function createHeader() {
         { href: 'talents.html', text: 'Talents' },
         { href: 'entertainment.html', text: 'Entertainment' },
         { href: 'news.html', text: 'News' },
+        { href: 'videos.html', text: 'Videos' },
         { href: 'funding.html', text: 'Funding' },
         { href: 'settings.html', text: 'Settings', ariaLabel: 'Navigate to Settings page' },
         { href: 'profile.html', text: 'Profile' }
