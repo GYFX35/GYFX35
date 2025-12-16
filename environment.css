@@ -1,0 +1,19 @@
+/* General styles for the environment page */
+.hero {
+    background-image: url('https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.feature {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.feature h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
