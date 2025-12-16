@@ -1,0 +1,60 @@
+#video-player-section,
+#video-gallery-section,
+#video-submission-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+#video-player {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+#video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.video-thumbnail {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: auto;
+}
+
+#video-submission-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#video-submission-form input,
+#video-submission-form textarea {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#video-submission-form button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
