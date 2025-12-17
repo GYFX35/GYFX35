@@ -3,7 +3,7 @@
     "deploy": "wrangler pages deploy ."
   },
   "dependencies": {
-    "jose": "^5.2.4"
+    "jose": "^5.10.0"
   },
   "devDependencies": {
     "wrangler": "^4.54.0"

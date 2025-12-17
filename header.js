@@ -20,6 +20,7 @@ function createHeader() {
         { href: 'index.html#youth', text: 'Youth Entrepreneurship', ariaLabel: 'Navigate to Youth Entrepreneurship section' },
         { href: 'index.html#wellbeing', text: 'Wellbeing', ariaLabel: 'Navigate to Wellbeing section' },
         { href: 'development.html', text: 'Development', ariaLabel: 'Navigate to Development page' },
+        { href: 'world-bank.html', text: 'World Bank', ariaLabel: 'Navigate to World Bank page' },
         { href: 'human-rights.html', text: 'Human Rights' },
         { href: 'environment.html', text: 'Environment' },
         { href: 'arts.html', text: 'Arts' },
