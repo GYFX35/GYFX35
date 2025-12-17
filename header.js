@@ -25,6 +25,7 @@ function createHeader() {
         { href: 'arts.html', text: 'Arts' },
         { href: 'talents.html', text: 'Talents' },
         { href: 'entertainment.html', text: 'Entertainment' },
+        { href: 'games.html', text: 'Games' },
         { href: 'agrobusiness.html', text: 'Agrobusiness' },
         { href: 'news.html', text: 'News' },
         { href: 'videos.html', text: 'Videos' },
