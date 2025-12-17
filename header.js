@@ -62,6 +62,28 @@ function createHeader() {
 
     document.body.prepend(header);
     document.body.prepend(skipLink);
+
+    const backToTopButton = document.createElement('button');
+    backToTopButton.id = 'back-to-top';
+    backToTopButton.textContent = 'Back to Top';
+    document.body.appendChild(backToTopButton);
 }
 
-document.addEventListener('DOMContentLoaded', createHeader);
+document.addEventListener('DOMContentLoaded', () => {
+    createHeader();
+
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.onscroll = function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    };
+
+    backToTopButton.onclick = function() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+});
