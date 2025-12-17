@@ -1,0 +1,29 @@
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#resources-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#resources-list li {
+    margin-bottom: 10px;
+}
+
+#resources-list a {
+    text-decoration: none;
+    color: #333;
+}
+
+#resources-list a:hover {
+    text-decoration: underline;
+}
