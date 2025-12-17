@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Development</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="development.css">
+    <link rel="manifest" href="manifest.json">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Global Development Initiatives</h1>
+                <p>Promoting a secure, healthy, and prosperous world for all.</p>
+            </div>
+        </section>
+
+        <section id="security" class="feature">
+            <h2>Global Security</h2>
+            <p>Working towards a world free from conflict and violence, where all people can live in safety and dignity.</p>
+        </section>
+
+        <section id="sanitation" class="feature">
+            <h2>Sanitation & Hygiene</h2>
+            <p>Ensuring access to clean water, sanitation, and hygiene for all, to prevent disease and improve quality of life.</p>
+        </section>
+
+        <section id="agriculture" class="feature">
+            <h2>Sustainable Agriculture</h2>
+            <p>Developing and promoting sustainable agricultural practices to ensure food security and protect the environment.</p>
+        </section>
+
+        <section id="economy" class="feature">
+            <h2>Economic Development</h2>
+            <p>Creating opportunities for economic growth and prosperity, to reduce poverty and improve livelihoods.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Global Peace, Youth Entrepreneurship, and Wellbeing. All rights reserved.</p>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+</body>
+</html>

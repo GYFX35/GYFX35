@@ -1,0 +1,12 @@
+/* Styles for the Global Development page */
+
+.feature {
+    padding: 2rem;
+    margin: 1rem 0;
+    background-color: #f4f4f4;
+    border-left: 5px solid #007bff;
+}
+
+.feature h2 {
+    color: #333;
+}
