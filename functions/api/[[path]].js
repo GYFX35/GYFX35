@@ -52,6 +52,73 @@ async function getAccessToken(serviceAccount) {
 }
 
 
+async function handleAiAssistantRequest(request, env) {
+  if (request.method !== 'POST') {
+    return new Response('Method not allowed', { status: 405 });
+  }
+
+  const { message } = await request.json();
+  if (!message) {
+    return new Response('No message provided', { status: 400 });
+  }
+
+  const serviceAccount = JSON.parse(env.GCP_SERVICE_ACCOUNT);
+  const accessToken = await getAccessToken(serviceAccount);
+
+  const PROJECT_ID = env.PROJECT_ID;
+  const LOCATION = env.LOCATION || 'us-central1';
+  const MODEL_ID = env.MODEL_ID || 'gemini-1.0-pro-001';
+
+  // Specialized prompt for the AI Assistant
+  const prompt = `You are an expert assistant for the "Global Peace, Youth Entrepreneurship, and Wellbeing Platform." Your goal is to provide helpful and inspiring information on these topics. Please answer the following user query in a clear, concise, and encouraging way:\n\nUser: "${message}"\n\nAssistant:`;
+
+  const apiUrl = `https://aiplatform.googleapis.com/v1/projects/${PROJECT_ID}/locations/${LOCATION}/publishers/google/models/${MODEL_ID}:generateContent`;
+
+  const apiRequest = {
+    contents: [{
+      parts: [{
+        text: prompt
+      }]
+    }]
+  };
+
+  const apiResponse = await fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(apiRequest),
+  });
+
+  const responseBody = await apiResponse.json();
+
+  if (!apiResponse.ok) {
+    console.error('API Error:', responseBody);
+    const errorDetails = responseBody.error?.message || 'Unknown error from API';
+    return new Response(JSON.stringify({ error: `API request failed: ${errorDetails}` }), {
+      status: apiResponse.status,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  // Handle cases where the response might be empty or malformed
+  if (!responseBody.candidates || !responseBody.candidates[0] || !responseBody.candidates[0].content || !responseBody.candidates[0].content.parts || !responseBody.candidates[0].content.parts[0]) {
+      console.error('Malformed API Response:', responseBody);
+      return new Response(JSON.stringify({ error: 'Received a malformed response from the AI.' }), {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+      });
+  }
+
+  const responseText = responseBody.candidates[0].content.parts[0].text;
+
+  return new Response(JSON.stringify({ response: responseText }), {
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
+
 async function handleApiRequest(request, env) {
   if (request.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 });
@@ -221,6 +288,9 @@ export async function onRequest(context) {
 
   try {
     // Route based on the path
+    if (path === '/api/ai') {
+      return await handleAiAssistantRequest(request, env);
+    }
     if (path === '/api/users') {
       return await handleUserCreation(request, env);
     } else if (path === '/api/videos') {
