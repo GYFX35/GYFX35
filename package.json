@@ -1,5 +1,13 @@
 {
+  "name": "@GYFX35/GYFX35",
+  "version": "1.0.0",
+  "description": "Global Peace, Youth Entrepreneurship, and Wellbeing Platform",
+  "repository": "https://github.com/GYFX35/GYFX35",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
     "deploy": "wrangler pages deploy ."
   },
   "dependencies": {
