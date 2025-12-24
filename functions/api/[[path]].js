@@ -1,4 +1,5 @@
 import * as jose from 'jose';
+import packageJson from '../../../package.json';
 
 // Global cache for the access token
 let tokenCache = {
@@ -222,6 +223,26 @@ async function handleUserCreation(request, env) {
   }
 }
 
+async function handleDevOpsRequest(request, env) {
+  if (request.method !== 'GET') {
+    return new Response('Method not allowed', { status: 405 });
+  }
+
+  const version = packageJson.version;
+  const status = 'ok';
+
+  const responseData = {
+    version,
+    status,
+    timestamp: new Date().toISOString(),
+  };
+
+  return new Response(JSON.stringify(responseData), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
 async function handleVideoSubmission(request, env) {
     if (request.method !== 'POST') {
         return new Response('Method not allowed', { status: 405 });
@@ -290,6 +311,9 @@ export async function onRequest(context) {
     // Route based on the path
     if (path === '/api/ai') {
       return await handleAiAssistantRequest(request, env);
+    }
+    if (path === '/api/devops') {
+      return await handleDevOpsRequest(request, env);
     }
     if (path === '/api/users') {
       return await handleUserCreation(request, env);
