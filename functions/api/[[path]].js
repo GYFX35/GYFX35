@@ -301,6 +301,36 @@ async function handleGetVideos(request, env) {
     }
 }
 
+async function handleEntrepreneurshipData(request, env) {
+    if (request.method !== 'GET') {
+        return new Response('Method not allowed', { status: 405 });
+    }
+
+    const entrepreneurshipData = {
+        title: "Erasmus for Young Entrepreneurs Statistics",
+        totalExchanges: 12678,
+        topDestinationCountries: [
+            { country: "Spain", exchanges: 2564 },
+            { country: "Italy", exchanges: 1515 },
+            { country: "Germany", exchanges: 1315 },
+            { country: "Netherlands", exchanges: 786 },
+            { country: "Belgium", exchanges: 710 }
+        ],
+        topOriginCountries: [
+            { country: "Italy", entrepreneurs: 2537 },
+            { country: "Spain", entrepreneurs: 2085 },
+            { country: "Poland", entrepreneurs: 698 },
+            { country: "Greece", entrepreneurs: 611 },
+            { country: "Romania", entrepreneurs: 583 }
+        ]
+    };
+
+    return new Response(JSON.stringify(entrepreneurshipData), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+    });
+}
+
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -314,6 +344,9 @@ export async function onRequest(context) {
     }
     if (path === '/api/devops') {
       return await handleDevOpsRequest(request, env);
+    }
+    if (path === '/api/entrepreneurship') {
+      return await handleEntrepreneurshipData(request, env);
     }
     if (path === '/api/users') {
       return await handleUserCreation(request, env);

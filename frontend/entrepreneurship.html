@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth Entrepreneurship in Europe - Statistics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Youth Entrepreneurship in Europe</h1>
+                <p>Data from the Erasmus for Young Entrepreneurs Program</p>
+            </div>
+        </section>
+
+        <section id="entrepreneurship-data" class="feature">
+            <h2 id="data-title"></h2>
+            <p>Total Exchanges: <span id="total-exchanges"></span></p>
+
+            <h3>Top 5 Destination Countries</h3>
+            <ul id="destination-countries"></ul>
+
+            <h3>Top 5 Origin Countries</h3>
+            <ul id="origin-countries"></ul>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/api/entrepreneurship')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('data-title').textContent = data.title;
+                    document.getElementById('total-exchanges').textContent = data.totalExchanges;
+
+                    const destinationList = document.getElementById('destination-countries');
+                    data.topDestinationCountries.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = `${item.country}: ${item.exchanges} exchanges`;
+                        destinationList.appendChild(li);
+                    });
+
+                    const originList = document.getElementById('origin-countries');
+                    data.topOriginCountries.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = `${item.country}: ${item.entrepreneurs} entrepreneurs`;
+                        originList.appendChild(li);
+                    });
+                })
+                .catch(error => console.error('Error fetching entrepreneurship data:', error));
+        });
+    </script>
+    <script src="../shared/footer.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+</body>
+</html>
