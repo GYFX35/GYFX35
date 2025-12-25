@@ -1,5 +1,5 @@
 import * as jose from 'jose';
-import packageJson from '../../../package.json';
+import packageJson from '../../package.json';
 
 // Global cache for the access token
 let tokenCache = {
