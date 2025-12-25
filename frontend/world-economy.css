@@ -1,0 +1,13 @@
+/* Styles for the World Economy page */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+main {
+    padding: 20px;
+}
