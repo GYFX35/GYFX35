@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Solidarity</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="solidarity.css">
+    <link rel="manifest" href="manifest.json">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Global Solidarity</h1>
+                <p>Standing together to address global challenges and build a more just and equitable world.</p>
+            </div>
+        </section>
+
+        <section id="poverty" class="feature">
+            <h2>End Poverty</h2>
+            <p>Working to eradicate extreme poverty and ensure everyone has the opportunity to live a life of dignity.</p>
+        </section>
+
+        <section id="climate-change" class="feature">
+            <h2>Climate Action</h2>
+            <p>Taking urgent action to combat climate change and its impacts, for a sustainable future for all.</p>
+        </section>
+
+        <section id="human-rights" class="feature">
+            <h2>Uphold Human Rights</h2>
+            <p>Promoting and protecting the human rights of all people, everywhere.</p>
+        </section>
+
+        <section id="education" class="feature">
+            <h2>Quality Education</h2>
+            <p>Ensuring inclusive and equitable quality education and promoting lifelong learning opportunities for all.</p>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+    <script src="script.js"></script>
+    <script src="../shared/footer.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+</body>
+</html>
