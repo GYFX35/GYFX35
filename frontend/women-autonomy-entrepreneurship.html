@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Autonomy and Entrepreneurship</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="women-autonomy-entrepreneurship.css">
+    <link rel="manifest" href="manifest.json">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Women Autonomy and Entrepreneurship</h1>
+                <p>Empowering women to achieve economic independence and leadership.</p>
+            </div>
+        </section>
+
+        <section id="education" class="feature">
+            <h2>Education and Skill Development</h2>
+            <p>Providing access to quality education and training to equip women with the skills needed to succeed.</p>
+        </section>
+
+        <section id="financial-inclusion" class="feature">
+            <h2>Financial Inclusion</h2>
+            <p>Ensuring women have access to financial services, including credit, savings, and insurance.</p>
+        </section>
+
+        <section id="leadership" class="feature">
+            <h2>Leadership and Mentorship</h2>
+            <p>Fostering leadership skills and providing mentorship opportunities for women entrepreneurs.</p>
+        </section>
+
+        <section id="market-access" class="feature">
+            <h2>Market Access</h2>
+            <p>Connecting women-led businesses to local and global markets.</p>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+    <script src="script.js"></script>
+    <script src="women-autonomy-entrepreneurship.js"></script>
+    <script src="../shared/footer.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+</body>
+</html>
