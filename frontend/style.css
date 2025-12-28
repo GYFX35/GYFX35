@@ -126,6 +126,13 @@ nav ul li a:hover {
     color: #1a202c;
 }
 
+.feature ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+}
+
 footer {
     background-color: #1a202c;
     color: #e2e8f0;

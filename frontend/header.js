@@ -38,6 +38,7 @@ function createHeader() {
         { href: 'news.html', text: 'News' },
         { href: 'videos.html', text: 'Videos' },
         { href: 'funding.html', text: 'Funding' },
+        { href: 'entrepreneurship.html', text: 'EU Entrepreneurship', ariaLabel: 'Navigate to EU Entrepreneurship page' },
         { href: 'ai-assistant.html', text: 'AI Assistant', ariaLabel: 'Navigate to AI Assistant page' },
         { href: 'settings.html', text: 'Settings', ariaLabel: 'Navigate to Settings page' },
         { href: 'profile.html', text: 'Profile' }
