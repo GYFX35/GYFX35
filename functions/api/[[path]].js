@@ -331,6 +331,41 @@ async function handleEntrepreneurshipData(request, env) {
     });
 }
 
+async function handleGbifRequest(request, env) {
+    if (request.method !== 'GET') {
+        return new Response('Method not allowed', { status: 405 });
+    }
+
+    const url = new URL(request.url);
+    // Proxying search requests to GBIF occurrence API
+    const gbifApiUrl = `https://api.gbif.org/v1/occurrence/search${url.search}`;
+
+    try {
+        const gbifResponse = await fetch(gbifApiUrl, {
+            headers: {
+                'User-Agent': 'GPW-Platform-Agent/1.0' // Good practice to set a User-Agent
+            }
+        });
+
+        // Create a new response passing through the body, status, and headers from GBIF.
+        const response = new Response(gbifResponse.body, gbifResponse);
+
+        // Add CORS headers to the response to allow the frontend to access it
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        response.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+
+        return response;
+
+    } catch (error) {
+        console.error('Error fetching from GBIF API:', error);
+        return new Response(JSON.stringify({ message: 'Error proxying request to GBIF API', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -344,6 +379,9 @@ export async function onRequest(context) {
     }
     if (path === '/api/devops') {
       return await handleDevOpsRequest(request, env);
+    }
+    if (path.startsWith('/api/gbif')) {
+        return await handleGbifRequest(request, env);
     }
     if (path === '/api/entrepreneurship') {
       return await handleEntrepreneurshipData(request, env);

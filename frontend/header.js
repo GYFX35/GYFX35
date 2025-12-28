@@ -30,6 +30,7 @@ function createHeader() {
         { href: 'human-rights.html', text: 'Human Rights' },
         { href: 'women-autonomy-entrepreneurship.html', text: 'Women Autonomy and Entrepreneurship', ariaLabel: 'Navigate to Women Autonomy and Entrepreneurship page' },
         { href: 'environment.html', text: 'Environment' },
+        { href: 'biodiversity.html', text: 'Biodiversity', ariaLabel: 'Navigate to Biodiversity page' },
         { href: 'arts.html', text: 'Arts' },
         { href: 'talents.html', text: 'Talents' },
         { href: 'entertainment.html', text: 'Entertainment' },

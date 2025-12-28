@@ -1,0 +1,30 @@
+#main-content {
+    padding-top: 100px; /* Increased padding to ensure header is cleared */
+}
+
+#gbif-data {
+    margin: 20px;
+}
+
+#data-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.species-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.species-card h3 {
+    margin-top: 0;
+}
+
+.species-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
