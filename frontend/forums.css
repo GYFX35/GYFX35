@@ -1,0 +1,22 @@
+.forum-section {
+    margin-bottom: 20px;
+}
+
+.forum-section h2 {
+    margin-bottom: 10px;
+}
+
+.forum-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.forum-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.forum-item h3 {
+    margin-top: 0;
+}

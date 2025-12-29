@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peace and Security Forums</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="forums.css">
+    <link rel="manifest" href="manifest.json">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Peace and Security Forums</h1>
+                <p>Engage in discussions about global peace, security, and development.</p>
+            </div>
+        </section>
+
+        <section class="forum-section">
+            <h2>General Discussion</h2>
+            <ul class="forum-list" id="general-discussion-list">
+                <li class="forum-item">
+                    <h3><a href="#">Welcome and Introductions</a></h3>
+                    <p>Introduce yourself to the community.</p>
+                </li>
+                <li class="forum-item">
+                    <h3><a href="#">Forum Rules and Guidelines</a></h3>
+                    <p>Please read before posting.</p>
+                </li>
+            </ul>
+            <form id="new-post-form">
+                <h3>Create a New Post</h3>
+                <input type="text" id="post-title" placeholder="Post Title" required>
+                <textarea id="post-content" placeholder="Post Content" required></textarea>
+                <button type="submit">Create Post</button>
+            </form>
+        </section>
+
+        <section class="forum-section">
+            <h2>Peace and Security</h2>
+            <ul class="forum-list">
+                <li class="forum-item">
+                    <h3><a href="#">Conflict Resolution</a></h3>
+                    <p>Discuss strategies and case studies in conflict resolution.</p>
+                </li>
+                <li class="forum-item">
+                    <h3><a href="#">International Relations</a></h3>
+                    <p>Debates and discussions on global politics.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="forum-section">
+            <h2>Development Promotion</h2>
+            <ul class="forum-list">
+                <li class="forum-item">
+                    <h3><a href="#">Sustainable Development Goals (SDGs)</a></h3>
+                    <p>Discuss the 17 SDGs and their implementation.</p>
+                </li>
+                <li class="forum-item">
+                    <h3><a href="#">Economic Development</a></h3>
+                    <p>Strategies for economic growth and poverty reduction.</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+    <script src="forums.js"></script>
+    <script src="../shared/footer.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+</body>
+</html>

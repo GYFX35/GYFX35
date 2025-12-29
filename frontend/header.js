@@ -38,6 +38,7 @@ function createHeader() {
         { href: 'agrobusiness.html', text: 'Agrobusiness' },
         { href: 'news.html', text: 'News' },
         { href: 'videos.html', text: 'Videos' },
+        { href: 'forums.html', text: 'Forums', ariaLabel: 'Navigate to Forums page' },
         { href: 'funding.html', text: 'Funding' },
         { href: 'entrepreneurship.html', text: 'EU Entrepreneurship', ariaLabel: 'Navigate to EU Entrepreneurship page' },
         { href: 'ai-assistant.html', text: 'AI Assistant', ariaLabel: 'Navigate to AI Assistant page' },
