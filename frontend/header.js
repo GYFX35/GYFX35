@@ -44,7 +44,8 @@ function createHeader() {
         { href: 'ai-assistant.html', text: 'AI Assistant', ariaLabel: 'Navigate to AI Assistant page' },
         { href: 'settings.html', text: 'Settings', ariaLabel: 'Navigate to Settings page' },
         { href: 'profile.html', text: 'Profile' },
-        { href: 'global_education.html', text: 'Global Education', ariaLabel: 'Navigate to Global Education page' }
+        { href: 'global_education.html', text: 'Global Education', ariaLabel: 'Navigate to Global Education page' },
+        { href: 'who.html', text: 'WHO', ariaLabel: 'Navigate to WHO page' }
     ];
 
     navItems.forEach(item => {

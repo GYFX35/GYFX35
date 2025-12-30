@@ -1,10 +1,10 @@
 name = "global-peace-platform"
 compatibility_date = "2024-03-22"
 
-[pages]
-main = "frontend"
-
 [vars]
 PROJECT_ID = "ai-services-7abb5"
 LOCATION = "us-central1"
 MODEL_ID = "gemini-1.0-pro-001"
+
+[pages]
+main = "frontend"

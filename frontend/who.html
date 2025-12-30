@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHO Data - GPW</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="who.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">GPW</a></h1>
+            </div>
+            <nav>
+                <!-- Navigation items will be injected by header.js -->
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>WHO Data</h2>
+                <p>Visualizing key indicators for global health and wellbeing.</p>
+            </div>
+        </section>
+
+        <section class="data-section">
+            <div class="container">
+                <h3>Select a Country</h3>
+                <select id="country-select">
+                    <option value="">--Please choose a country--</option>
+                </select>
+                <div id="charts-container" style="height: 400px; width: 800px;">
+                    <!-- Charts will be rendered here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+    <script src="who.js"></script>
+</body>
+</html>
