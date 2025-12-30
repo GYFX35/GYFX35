@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Education Access</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="global_education.css">
+    <link rel="manifest" href="manifest.json">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Global Education Access for All</h1>
+                <p>Promoting access to quality education and online training opportunities worldwide.</p>
+            </div>
+        </section>
+
+        <section id="unesco-data" class="feature">
+            <h2>UNESCO Education Data</h2>
+            <div id="unesco-data-container">
+                <!-- UNESCO data will be loaded here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+    <script src="script.js"></script>
+    <script src="global_education.js"></script>
+    <script src="../shared/footer.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+</body>
+</html>
