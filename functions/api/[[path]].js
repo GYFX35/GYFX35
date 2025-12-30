@@ -367,6 +367,29 @@ async function handleGbifRequest(request, env) {
 }
 
 
+async function handleWhoRequest(request) {
+    const url = new URL(request.url);
+    const apiPath = url.pathname.replace('/api/who/', '');
+    const apiQuery = url.search;
+    const whoApiUrl = `https://ghoapi.azureedge.net/api/${apiPath}${apiQuery}`;
+
+    try {
+        const whoResponse = await fetch(whoApiUrl);
+        const response = new Response(whoResponse.body, whoResponse);
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        response.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+        return response;
+    } catch (error) {
+        console.error('Error fetching from WHO API:', error);
+        return new Response(JSON.stringify({ message: 'Error proxying request to WHO API', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
+
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -382,6 +405,9 @@ export async function onRequest(context) {
     }
     if (path.startsWith('/api/gbif')) {
         return await handleGbifRequest(request, env);
+    }
+    if (path.startsWith('/api/who/')) {
+        return await handleWhoRequest(request);
     }
     if (path === '/api/entrepreneurship') {
       return await handleEntrepreneurshipData(request, env);

@@ -1,0 +1,15 @@
+/* Styles for the WHO data page */
+.data-section {
+    padding: 2rem 0;
+}
+
+#country-select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#charts-container {
+    width: 100%;
+    height: 500px; /* Adjust as needed */
+}
