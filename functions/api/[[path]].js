@@ -80,6 +80,9 @@ async function handleAiAssistantRequest(request, env) {
       parts: [{
         text: prompt
       }]
+    }],
+    tools: [{
+      "googleSearchRetrieval": {}
     }]
   };
 
