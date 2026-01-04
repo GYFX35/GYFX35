@@ -390,6 +390,36 @@ async function handleWhoRequest(request) {
 }
 
 
+async function handleUisRequest(request) {
+    const url = new URL(request.url);
+    // Proxying search requests to UIS API
+    const uisApiUrl = `https://api.uis.unesco.org/api/public${url.pathname.replace('/api/uis', '')}${url.search}`;
+
+    try {
+        const uisResponse = await fetch(uisApiUrl, {
+            headers: {
+                'User-Agent': 'GPW-Platform-Agent/1.0'
+            }
+        });
+
+        const response = new Response(uisResponse.body, uisResponse);
+
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        response.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+
+        return response;
+
+    } catch (error) {
+        console.error('Error fetching from UIS API:', error);
+        return new Response(JSON.stringify({ message: 'Error proxying request to UIS API', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
+
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -405,6 +435,9 @@ export async function onRequest(context) {
     }
     if (path.startsWith('/api/gbif')) {
         return await handleGbifRequest(request, env);
+    }
+    if (path.startsWith('/api/uis/')) {
+        return await handleUisRequest(request);
     }
     if (path.startsWith('/api/who/')) {
         return await handleWhoRequest(request);
