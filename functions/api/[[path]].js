@@ -367,6 +367,23 @@ async function handleGbifRequest(request, env) {
 }
 
 
+async function handleStatusRequest(request) {
+  if (request.method !== 'GET') {
+    return new Response('Method not allowed', { status: 405 });
+  }
+
+  const responseData = {
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+  };
+
+  return new Response(JSON.stringify(responseData), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
+
 async function handleWhoRequest(request) {
     const url = new URL(request.url);
     const apiPath = url.pathname.replace('/api/who/', '');
@@ -402,6 +419,9 @@ export async function onRequest(context) {
     }
     if (path === '/api/devops') {
       return await handleDevOpsRequest(request, env);
+    }
+    if (path === '/api/status') {
+      return await handleStatusRequest(request);
     }
     if (path.startsWith('/api/gbif')) {
         return await handleGbifRequest(request, env);
