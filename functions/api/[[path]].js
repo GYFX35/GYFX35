@@ -226,6 +226,51 @@ async function handleUserCreation(request, env) {
   }
 }
 
+async function handleGetUserCount(request, env) {
+  if (request.method !== 'GET') {
+    return new Response('Method not allowed', { status: 405 });
+  }
+
+  try {
+    const result = await env.DB.prepare("SELECT COUNT(*) as count FROM users").first();
+    const count = result ? result.count : 0;
+
+    return new Response(JSON.stringify({ count }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error) {
+    console.error('Error fetching user count:', error);
+    return new Response(JSON.stringify({ message: 'Error fetching user count', error: error.message }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+}
+
+async function handleGetFundingOptions(request, env) {
+  if (request.method !== 'GET') {
+    return new Response('Method not allowed', { status: 405 });
+  }
+
+  // This is a placeholder. In a real application, you would read this
+  // from a file or a database. For this example, we'll hardcode it.
+  const fundingData = {
+    github: "Gyfx35",
+    patreon: "Gyfx35",
+    kickstarter: "Gyfx35",
+    custom: [
+      "https://www.blockchain.com/btc/address/bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
+      "https://www.buymeacoffee.com/Gyfx35"
+    ]
+  };
+
+  return new Response(JSON.stringify(fundingData), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
 async function handleDevOpsRequest(request, env) {
   if (request.method !== 'GET') {
     return new Response('Method not allowed', { status: 405 });
@@ -467,6 +512,12 @@ export async function onRequest(context) {
     }
     if (path === '/api/entrepreneurship') {
       return await handleEntrepreneurshipData(request, env);
+    }
+    if (path === '/api/funding') {
+      return await handleGetFundingOptions(request, env);
+    }
+    if (path === '/api/users/count') {
+      return await handleGetUserCount(request, env);
     }
     if (path === '/api/users') {
       return await handleUserCreation(request, env);

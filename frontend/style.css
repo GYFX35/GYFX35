@@ -191,3 +191,7 @@ footer {
 #back-to-top:hover {
   background-color: #138496;
 }
+
+.track-page main {
+  padding-top: 8rem;
+}

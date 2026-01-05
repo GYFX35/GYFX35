@@ -8,3 +8,10 @@ MODEL_ID = "gemini-1.0-pro-001"
 
 [pages]
 main = "frontend"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "users"
+# IMPORTANT: The database_id is a placeholder for local development.
+# Replace with a real ID for production.
+database_id = "placeholder-id"
