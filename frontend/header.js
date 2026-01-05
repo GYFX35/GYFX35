@@ -46,7 +46,8 @@ function createHeader() {
         { href: 'profile.html', text: 'Profile' },
         { href: 'global_education.html', text: 'Global Education', ariaLabel: 'Navigate to Global Education page' },
         { href: 'who.html', text: 'WHO', ariaLabel: 'Navigate to WHO page' },
-        { href: 'uis.html', text: 'UIS Data', ariaLabel: 'Navigate to UIS Data page' }
+        { href: 'uis.html', text: 'UIS Data', ariaLabel: 'Navigate to UIS Data page' },
+        { href: 'track.html', text: 'Track', ariaLabel: 'Navigate to Track page' }
     ];
 
     navItems.forEach(item => {
