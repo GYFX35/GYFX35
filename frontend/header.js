@@ -40,6 +40,7 @@ function createHeader() {
         { href: 'news.html', text: 'News' },
         { href: 'videos.html', text: 'Videos' },
         { href: 'forums.html', text: 'Forums', ariaLabel: 'Navigate to Forums page' },
+        { href: 'global-investment-finances-forum.html', text: 'Global Investment and Finances Forum', ariaLabel: 'Navigate to Global Investment and Finances Forum page' },
         { href: 'funding.html', text: 'Funding' },
         { href: 'entrepreneurship.html', text: 'EU Entrepreneurship', ariaLabel: 'Navigate to EU Entrepreneurship page' },
         { href: 'ai-assistant.html', text: 'AI Assistant', ariaLabel: 'Navigate to AI Assistant page' },

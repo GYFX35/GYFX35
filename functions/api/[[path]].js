@@ -284,6 +284,62 @@ async function handleVideoSubmission(request, env) {
     }
 }
 
+async function handlePostSubmission(request, env) {
+    if (request.method !== 'POST') {
+        return new Response('Method not allowed', { status: 405 });
+    }
+
+    try {
+        const { title, content } = await request.json();
+
+        // 1. Make sure you have a D1 database bound to this worker as `env.DB`.
+        // 2. Create a 'posts' table with the following schema:
+        //    CREATE TABLE posts (
+        //      id INTEGER PRIMARY KEY AUTOINCREMENT,
+        //      title TEXT NOT NULL,
+        //      content TEXT NOT NULL,
+        //      submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        //    );
+
+        const { results } = await env.DB.prepare(
+            "INSERT INTO posts (title, content) VALUES (?, ?)"
+        )
+        .bind(title, content)
+        .run();
+
+        return new Response(JSON.stringify({ message: 'Post submitted successfully', results }), {
+            status: 201,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    } catch (error) {
+        console.error('Error submitting post:', error);
+        return new Response(JSON.stringify({ message: 'Error submitting post', error: error.message }), {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
+async function handleGetPosts(request, env) {
+    if (request.method !== 'GET') {
+        return new Response('Method not allowed', { status: 405 });
+    }
+
+    try {
+        const { results } = await env.DB.prepare("SELECT * FROM posts ORDER BY submitted_at DESC").all();
+        return new Response(JSON.stringify(results), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    } catch (error) {
+        console.error('Error fetching posts:', error);
+        return new Response(JSON.stringify({ message: 'Error fetching posts', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
 async function handleGetVideos(request, env) {
     if (request.method !== 'GET') {
         return new Response('Method not allowed', { status: 405 });
@@ -475,6 +531,12 @@ export async function onRequest(context) {
             return await handleGetVideos(request, env);
         } else if (request.method === 'POST') {
             return await handleVideoSubmission(request, env);
+        }
+    } else if (path === '/api/posts') {
+        if (request.method === 'GET') {
+            return await handleGetPosts(request, env);
+        } else if (request.method === 'POST') {
+            return await handlePostSubmission(request, env);
         }
     }
     else {
