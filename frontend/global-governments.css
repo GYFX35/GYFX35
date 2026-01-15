@@ -1,0 +1,40 @@
+/* General styles for the Global Governments Partnership page */
+
+.initiatives-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.initiative-card {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.initiative-card h3 {
+    color: #333;
+}
+
+#partners-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+#partners-list li {
+    margin-bottom: 10px;
+}
+
+#partners-list a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+#partners-list a:hover {
+    text-decoration: underline;
+}
