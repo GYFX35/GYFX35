@@ -18,7 +18,9 @@
                     <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profile-pic">
                     <video id="camera-stream" autoplay style="display: none;"></video>
                     <button id="use-camera">Use Camera</button>
-                    <button id="capture" style="display: none;">Capture</button>
+                    <button id="capture-photo" style="display: none;">Capture Photo</button>
+                    <button id="start-record" style="display: none;">Start Recording</button>
+                    <button id="stop-record" style="display: none;">Stop Recording</button>
                     <canvas id="canvas" style="display: none;"></canvas>
                 </div>
                 <form id="profile-form">
@@ -32,11 +34,18 @@
                 </form>
             </div>
         </section>
+
+        <section id="media-gallery" class="feature">
+            <h2>My Media</h2>
+            <div class="gallery-container">
+                <!-- Media thumbnails will be dynamically inserted here -->
+            </div>
+        </section>
     </main>
 
     <script src="header.js"></script>
     <script src="script.js"></script>
-    <script src="profile.js"></script>
+    <script type="module" src="profile.js"></script>
     <script src="../shared/footer.js"></script>
 </body>
 </html>

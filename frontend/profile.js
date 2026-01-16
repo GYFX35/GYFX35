@@ -1,45 +1,103 @@
+import { getCameraStream, capturePhoto, startRecording, stopRecording, uploadMedia } from './media.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const profileForm = document.getElementById('profile-form');
     const useCameraBtn = document.getElementById('use-camera');
-    const captureBtn = document.getElementById('capture');
-    const cameraStream = document.getElementById('camera-stream');
+    const capturePhotoBtn = document.getElementById('capture-photo');
+    const startRecordBtn = document.getElementById('start-record');
+    const stopRecordBtn = document.getElementById('stop-record');
+    const cameraStreamEl = document.getElementById('camera-stream');
     const profilePic = document.getElementById('profile-pic');
     const canvas = document.getElementById('canvas');
+    const galleryContainer = document.querySelector('#media-gallery .gallery-container');
     let stream;
+    let mediaRecorder;
 
     useCameraBtn.addEventListener('click', async () => {
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            try {
-                stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                cameraStream.srcObject = stream;
-                cameraStream.style.display = 'block';
-                profilePic.style.display = 'none';
-                useCameraBtn.style.display = 'none';
-                captureBtn.style.display = 'block';
-            } catch (error) {
-                console.error('Error accessing camera:', error);
-                alert('Could not access the camera. Please check your browser permissions.');
-            }
-        } else {
-            alert('Your browser does not support camera access.');
+        try {
+            stream = await getCameraStream(cameraStreamEl);
+            profilePic.style.display = 'none';
+            useCameraBtn.style.display = 'none';
+            capturePhotoBtn.style.display = 'block';
+            startRecordBtn.style.display = 'block';
+        } catch (error) {
+            alert(error.message);
         }
     });
 
-    captureBtn.addEventListener('click', () => {
-        const context = canvas.getContext('2d');
-        canvas.width = cameraStream.videoWidth;
-        canvas.height = cameraStream.videoHeight;
-        context.drawImage(cameraStream, 0, 0, canvas.width, canvas.height);
-
-        const dataUrl = canvas.toDataURL('image/png');
+    capturePhotoBtn.addEventListener('click', () => {
+        const dataUrl = capturePhoto(cameraStreamEl, canvas);
         profilePic.src = dataUrl;
 
-        stream.getTracks().forEach(track => track.stop());
-        cameraStream.style.display = 'none';
-        captureBtn.style.display = 'none';
+        // Convert data URL to Blob for upload
+        fetch(dataUrl)
+            .then(res => res.blob())
+            .then(blob => {
+                uploadMedia(blob, 'photo.png', fetchMedia);
+            });
+
+        stopStream();
+    });
+
+    startRecordBtn.addEventListener('click', () => {
+        mediaRecorder = startRecording(stream, (videoBlob) => {
+            uploadMedia(videoBlob, 'video.webm', fetchMedia);
+        });
+        startRecordBtn.style.display = 'none';
+        stopRecordBtn.style.display = 'block';
+    });
+
+    stopRecordBtn.addEventListener('click', () => {
+        stopRecording(mediaRecorder);
+        stopStream();
+        stopRecordBtn.style.display = 'none';
+    });
+
+    function stopStream() {
+        if (stream) {
+            stream.getTracks().forEach(track => track.stop());
+        }
+        cameraStreamEl.style.display = 'none';
+        capturePhotoBtn.style.display = 'none';
+        startRecordBtn.style.display = 'none';
         profilePic.style.display = 'block';
         useCameraBtn.style.display = 'block';
-    });
+    }
+
+    async function fetchMedia() {
+        try {
+            const response = await fetch('/api/media');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const mediaFiles = await response.json();
+            renderMediaGallery(mediaFiles);
+        } catch (error) {
+            console.error('Error fetching media:', error);
+            galleryContainer.innerHTML = '<p>Could not fetch media. Please try again later.</p>';
+        }
+    }
+
+    function renderMediaGallery(mediaFiles) {
+        galleryContainer.innerHTML = '';
+        if (!mediaFiles || mediaFiles.length === 0) {
+            galleryContainer.innerHTML = '<p>No media has been uploaded yet.</p>';
+            return;
+        }
+        mediaFiles.forEach(file => {
+            const mediaElement = document.createElement('div');
+            mediaElement.classList.add('media-item');
+            if (file.type.startsWith('image/')) {
+                mediaElement.innerHTML = `<img src="/uploads/${file.filename}" alt="User media">`;
+            } else if (file.type.startsWith('video/')) {
+                mediaElement.innerHTML = `<video src="/uploads/${file.filename}" controls></video>`;
+            }
+            galleryContainer.appendChild(mediaElement);
+        });
+    }
+
+    // Initial fetch of media when the page loads
+    fetchMedia();
 
     profileForm.addEventListener('submit', async (event) => {
         event.preventDefault();

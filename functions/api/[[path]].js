@@ -284,6 +284,68 @@ async function handleVideoSubmission(request, env) {
     }
 }
 
+async function handleGetMedia(request, env) {
+    if (request.method !== 'GET') {
+        return new Response('Method not allowed', { status: 405 });
+    }
+
+    try {
+        const { results } = await env.DB.prepare('SELECT * FROM media ORDER BY uploaded_at DESC').all();
+        return new Response(JSON.stringify(results), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    } catch (error) {
+        console.error('Error fetching media:', error);
+        return new Response(JSON.stringify({ message: 'Error fetching media', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
+async function handleMediaUpload(request, env) {
+    if (request.method !== 'POST') {
+        return new Response('Method not allowed', { status: 405 });
+    }
+
+    try {
+        const formData = await request.formData();
+        const file = formData.get('media');
+        // WARNING: This is a security vulnerability.
+        // In a production environment, you must replace this hardcoded user ID
+        // with the actual user ID from a secure authentication system (e.g., JWT, session).
+        const userId = 1;
+
+        if (!file) {
+            return new Response('No file uploaded', { status: 400 });
+        }
+
+        const fileName = `${Date.now()}_${file.name}`;
+        await env.R2.put(fileName, file.stream(), {
+            httpMetadata: { contentType: file.type },
+        });
+
+        const mediaType = file.type.startsWith('image/') ? 'photo' : 'video';
+        await env.DB.prepare(
+            'INSERT INTO media (user_id, media_type, file_name) VALUES (?, ?, ?)'
+        )
+        .bind(userId, mediaType, fileName)
+        .run();
+
+        return new Response(JSON.stringify({ message: 'File uploaded successfully', fileName }), {
+            status: 201,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    } catch (error) {
+        console.error('Error uploading file:', error);
+        return new Response(JSON.stringify({ message: 'Error uploading file', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
 async function handlePostSubmission(request, env) {
     if (request.method !== 'POST') {
         return new Response('Method not allowed', { status: 405 });
@@ -526,6 +588,10 @@ export async function onRequest(context) {
     }
     if (path === '/api/users') {
       return await handleUserCreation(request, env);
+    } else if (path === '/api/upload') {
+        return await handleMediaUpload(request, env);
+    } else if (path === '/api/media') {
+        return await handleGetMedia(request, env);
     } else if (path === '/api/videos') {
         if (request.method === 'GET') {
             return await handleGetVideos(request, env);
