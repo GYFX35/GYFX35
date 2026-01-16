@@ -9,3 +9,11 @@ MODEL_ID = "gemini-1.0-pro-001"
 [pages]
 main = "frontend"
 
+[[d1_databases]]
+binding = "DB"
+database_name = "gpw-db"
+database_id = "d1-database-id-placeholder"
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "gpw-media"
