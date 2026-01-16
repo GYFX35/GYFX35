@@ -16,6 +16,7 @@
     "jose": "^5.10.0"
   },
   "devDependencies": {
-    "wrangler": "^4.54.0"
+    "wrangler": "^4.59.2",
+    "playwright": "^1.57.0"
   }
 }
