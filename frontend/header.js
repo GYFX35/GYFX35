@@ -47,6 +47,7 @@ function createHeader() {
         { href: 'settings.html', text: 'Settings', ariaLabel: 'Navigate to Settings page' },
         { href: 'profile.html', text: 'Profile' },
         { href: 'global_education.html', text: 'Global Education', ariaLabel: 'Navigate to Global Education page' },
+        { href: 'global-universities.html', text: 'Global Universities', ariaLabel: 'Navigate to Global Universities page' },
         { href: 'who.html', text: 'WHO', ariaLabel: 'Navigate to WHO page' },
         { href: 'uis.html', text: 'UIS Data', ariaLabel: 'Navigate to UIS Data page' },
         { href: 'services.html', text: 'Public Services', ariaLabel: 'Navigate to Global Public Services and Assistance page' }
