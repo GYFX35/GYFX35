@@ -408,13 +408,52 @@ async function handleGetVideos(request, env) {
     }
 
     try {
-        const { results } = await env.DB.prepare("SELECT * FROM videos ORDER BY submitted_at DESC").all();
-        return new Response(JSON.stringify(results), {
+        // The sources array is designed to be extensible.
+        // Currently, it only fetches from the local D1 database.
+        // The external APIs for World TV and Canal+ were investigated,
+        // but no public APIs were found to be available at this time.
+        // Placeholders for their fetchers have been removed, but can be
+        // re-added in the future if APIs become available.
+        const sources = [
+            { name: 'db', fetcher: () => env.DB.prepare("SELECT * FROM videos ORDER BY submitted_at DESC").all() }
+        ];
+
+        const results = await Promise.allSettled(sources.map(s => s.fetcher()));
+
+        let allVideos = [];
+
+        results.forEach((result, index) => {
+            const sourceName = sources[index].name;
+
+            if (result.status === 'fulfilled') {
+                let videos = result.value;
+                // The DB query returns an object with a `results` property
+                if (sourceName === 'db' && videos.results) {
+                    videos = videos.results;
+                }
+
+                // Normalize data from different sources to a consistent format
+                const normalizedVideos = videos.map(video => ({
+                    id: video.id,
+                    title: video.title,
+                    url: video.url,
+                    description: video.description,
+                    source: sourceName
+                }));
+                allVideos = allVideos.concat(normalizedVideos);
+
+            } else {
+                console.error(`Error fetching videos from ${sourceName}:`, result.reason);
+            }
+        });
+
+        return new Response(JSON.stringify(allVideos), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },
         });
+
     } catch (error) {
-        console.error('Error fetching videos:', error);
+        console.error('Error in handleGetVideos:', error);
         return new Response(JSON.stringify({ message: 'Error fetching videos', error: error.message }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' },
@@ -556,6 +595,7 @@ async function handleUisRequest(request) {
         });
     }
 }
+
 
 
 export async function onRequest(context) {
