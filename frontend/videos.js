@@ -32,16 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         videos.forEach(video => {
-            const embedUrl = getEmbedUrl(video.url);
-            if (!embedUrl) return;
+            if (!video.thumbnail || !video.url) return;
 
             const videoElement = document.createElement('div');
-            videoElement.classList.add('video-item');
-            videoElement.innerHTML = `
+            videoElement.classList.add('video-preview');
+
+            // Create a link that wraps the thumbnail and title
+            const videoLink = document.createElement('a');
+            videoLink.href = video.url;
+            videoLink.target = '_blank'; // Open in a new tab
+            videoLink.rel = 'noopener noreferrer';
+
+            videoLink.innerHTML = `
+                <img src="${video.thumbnail}" alt="${video.title}" style="width:100%; height:auto;">
                 <h3>${video.title}</h3>
-                <iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>${video.description}</p>
             `;
+
+            videoElement.appendChild(videoLink);
             galleryContainer.appendChild(videoElement);
         });
     }
