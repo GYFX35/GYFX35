@@ -407,57 +407,84 @@ async function handleGetVideos(request, env) {
         return new Response('Method not allowed', { status: 405 });
     }
 
-    try {
-        // The sources array is designed to be extensible.
-        // Currently, it only fetches from the local D1 database.
-        // The external APIs for World TV and Canal+ were investigated,
-        // but no public APIs were found to be available at this time.
-        // Placeholders for their fetchers have been removed, but can be
-        // re-added in the future if APIs become available.
-        const sources = [
-            { name: 'db', fetcher: () => env.DB.prepare("SELECT * FROM videos ORDER BY submitted_at DESC").all() }
-        ];
+    const fetchVideosFromYouTube = async () => {
+        const YOUTUBE_API_KEY = env.YOUTUBE_API_KEY;
+        const PLAYLIST_ID = env.YOUTUBE_PLAYLIST_ID;
+        const maxResults = 10;
+        const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${PLAYLIST_ID}&maxResults=${maxResults}&key=${YOUTUBE_API_KEY}`;
 
-        const results = await Promise.allSettled(sources.map(s => s.fetcher()));
-
-        let allVideos = [];
-
-        results.forEach((result, index) => {
-            const sourceName = sources[index].name;
-
-            if (result.status === 'fulfilled') {
-                let videos = result.value;
-                // The DB query returns an object with a `results` property
-                if (sourceName === 'db' && videos.results) {
-                    videos = videos.results;
-                }
-
-                // Normalize data from different sources to a consistent format
-                const normalizedVideos = videos.map(video => ({
-                    id: video.id,
-                    title: video.title,
-                    url: video.url,
-                    description: video.description,
-                    source: sourceName
-                }));
-                allVideos = allVideos.concat(normalizedVideos);
-
-            } else {
-                console.error(`Error fetching videos from ${sourceName}:`, result.reason);
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                const errorBody = await response.text();
+                console.error(`YouTube API Error: ${response.status} ${response.statusText}`, errorBody);
+                throw new Error(`Failed to fetch videos from YouTube: ${response.statusText}`);
             }
-        });
+            const data = await response.json();
+            // Handle cases where 'items' might be missing from the response
+            if (!data.items) {
+                console.error('YouTube API response missing "items" array:', data);
+                return [];
+            }
+            return data.items.map(item => ({
+                id: item.snippet.resourceId.videoId,
+                title: item.snippet.title,
+                url: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`,
+                thumbnail: item.snippet.thumbnails.high.url, // Extract high-quality thumbnail
+                description: item.snippet.description,
+                source: 'youtube'
+            }));
+        } catch (error) {
+            console.error('Error fetching from YouTube:', error);
+            return []; // Return empty array on error to avoid breaking the entire response
+        }
+    };
 
-        return new Response(JSON.stringify(allVideos), {
+    try {
+        // 1. Check D1 cache first
+        const { results } = await env.DB.prepare("SELECT * FROM videos ORDER BY submitted_at DESC").all();
+
+        if (results && results.length > 0) {
+            // 2. Return cached data if available
+            return new Response(JSON.stringify(results), {
+                status: 200,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
+        // 3. If cache is empty, fetch from YouTube
+        const youtubeVideos = await fetchVideosFromYouTube();
+
+        if (youtubeVideos.length > 0) {
+            // 4. Store new data in the database
+            // NOTE: This assumes the 'videos' table has 'thumbnail' and 'source' columns.
+            const stmt = env.DB.prepare("INSERT INTO videos (title, url, description, thumbnail, source) VALUES (?, ?, ?, ?, ?)");
+            const inserts = youtubeVideos.map(video => stmt.bind(video.title, video.url, video.description, video.thumbnail, video.source));
+            await env.DB.batch(inserts);
+        }
+
+        // 5. Return the fresh data
+        return new Response(JSON.stringify(youtubeVideos), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },
         });
 
     } catch (error) {
-        console.error('Error in handleGetVideos:', error);
-        return new Response(JSON.stringify({ message: 'Error fetching videos', error: error.message }), {
-            status: 500,
-            headers: { 'Content-Type': 'application/json' },
-        });
+        console.error('Error in handleGetVideos with D1:', error);
+        // Fallback to fetching directly from YouTube if the database logic fails
+        try {
+            const youtubeVideos = await fetchVideosFromYouTube();
+            return new Response(JSON.stringify(youtubeVideos), {
+                status: 200,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        } catch (youtubeError) {
+             console.error('Fallback YouTube fetch also failed:', youtubeError);
+             return new Response(JSON.stringify({ message: 'Error fetching videos from all sources', error: youtubeError.message }), {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
     }
 }
 
