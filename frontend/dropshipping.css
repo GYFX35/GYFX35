@@ -1,0 +1,47 @@
+/* Add custom styles for the dropshipping page here */
+#main-content {
+    padding-top: 150px; /* Adjust this value as needed */
+}
+
+.hero {
+    background-color: #f2f2f2;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#signup-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#signup-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#signup-form input,
+#signup-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box; /* To include padding in the width */
+}
+
+#signup-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#signup-form button:hover {
+    background-color: #0056b3;
+}
