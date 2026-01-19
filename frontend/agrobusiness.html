@@ -3,54 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrobusiness Development - GPW</title>
+    <title>Agrobusiness - Global Peace, Youth Entrepreneurship, and Wellbeing Platform</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="agrobusiness.css">
+    <link rel="manifest" href="manifest.json">
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
-
+    <header></header>
     <main id="main-content">
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Innovations in Agrobusiness</h1>
-                <p>Discover sustainable and profitable agricultural ventures.</p>
-            </div>
-        </section>
-
-        <section id="projects" class="feature">
-            <h2>Featured Projects</h2>
-            <div class="projects-container">
-                <div class="project-card">
-                    <h3>Project Alpha</h3>
-                    <p>A sustainable farming initiative focused on organic crops.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Project Beta</h3>
-                    <p>Developing new irrigation techniques for arid regions.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Project Gamma</h3>
-                    <p>Community-based beekeeping for honey production.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="resources" class="feature">
-            <h2>Farmer Resources</h2>
-            <div id="resources-list">
-                <ul>
-                    <li><a href="#">Best Practices for Soil Health</a></li>
-                    <li><a href="#">Crop Rotation Guides</a></li>
-                    <li><a href="#">Pest Control Strategies</a></li>
-                </ul>
-            </div>
-        </section>
+        <h1>Agrobusiness</h1>
+        <div id="charts-container"></div>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="header.js"></script>
-    <script src="script.js"></script>
     <script src="agrobusiness.js"></script>
-    <script src="../shared/footer.js"></script>
+    <script src="footer.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
 </body>
 </html>
