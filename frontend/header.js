@@ -51,7 +51,8 @@ function createHeader() {
         { href: 'global-universities.html', text: 'Global Universities', ariaLabel: 'Navigate to Global Universities page' },
         { href: 'who.html', text: 'WHO', ariaLabel: 'Navigate to WHO page' },
         { href: 'uis.html', text: 'UIS Data', ariaLabel: 'Navigate to UIS Data page' },
-        { href: 'services.html', text: 'Public Services', ariaLabel: 'Navigate to Global Public Services and Assistance page' }
+        { href: 'services.html', text: 'Public Services', ariaLabel: 'Navigate to Global Public Services and Assistance page' },
+        { href: 'dropshipping.html', text: 'Dropshipping', ariaLabel: 'Navigate to Dropshipping page' }
     ];
 
     navItems.forEach(item => {

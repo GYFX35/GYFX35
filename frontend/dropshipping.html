@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropshipping for Entrepreneurs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dropshipping.css">
+    <link rel="manifest" href="manifest.json">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Dropshipping for Startups and Entrepreneurs</h1>
+                <p>Sell and promote your products through our platform.</p>
+            </div>
+        </section>
+
+        <section id="dropshipping-info" class="feature">
+            <h2>How it works</h2>
+            <p>Our dropshipping program allows you to list your products on our site. When a customer places an order, we handle the payment and send the order to you. You ship the product directly to the customer.</p>
+
+            <h3>Benefits</h3>
+            <ul>
+                <li>No inventory costs</li>
+                <li>Wide audience reach</li>
+                <li>Easy to get started</li>
+            </ul>
+        </section>
+
+        <section id="signup" class="feature">
+            <h2>Register your interest</h2>
+            <form id="signup-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+    <script src="dropshipping.js"></script>
+    <script src="../shared/footer.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+</body>
+</html>
