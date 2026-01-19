@@ -12,8 +12,8 @@ main = "frontend"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "gpw-db"
-database_id = "d1-database-id-placeholder"
+database_name = "youthentrepreneurship"
+database_id = "95c0e18c-d118-43f0-97ec-ec636f51ddca"
 
 [[r2_buckets]]
 binding = "R2"
