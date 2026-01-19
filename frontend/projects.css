@@ -1,1 +1,22 @@
-/* Styles for the Project Development & Support page */
+main {
+    padding-top: 100px;
+}
+
+#project-list {
+    list-style: none;
+    padding: 0;
+}
+
+#project-list li {
+    margin-bottom: 10px;
+}
+
+#project-list a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+}
+
+#project-list a:hover {
+    color: #007bff;
+}
