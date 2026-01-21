@@ -26,6 +26,7 @@ function createHeader() {
         { href: 'solidarity.html', text: 'Solidarity', ariaLabel: 'Navigate to Solidarity page' },
         { href: 'projects.html', text: 'Projects', ariaLabel: 'Navigate to Projects page' },
         { href: 'world-bank.html', text: 'World Bank', ariaLabel: 'Navigate to World Bank page' },
+        { href: 'global-banks.html', text: 'Global Banks', ariaLabel: 'Navigate to Global Banks page' },
         { href: 'world-economy.html', text: 'World Economy', ariaLabel: 'Navigate to World Economy page' },
         { href: 'logistics.html', text: 'Logistics', ariaLabel: 'Navigate to Logistics page' },
         { href: 'transport-development.html', text: 'Transport Development', ariaLabel: 'Navigate to Transport Development page' },
