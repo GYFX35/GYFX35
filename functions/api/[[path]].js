@@ -53,6 +53,50 @@ async function getAccessToken(serviceAccount) {
 }
 
 
+async function handleGoogleSearchRequest(request, env) {
+    if (request.method !== 'POST') {
+        return new Response('Method not allowed', { status: 405 });
+    }
+
+    try {
+        const { query } = await request.json();
+        if (!query) {
+            return new Response('No query provided', { status: 400 });
+        }
+
+        const API_KEY = env.GOOGLE_API_KEY;
+        const SEARCH_ENGINE_ID = env.GOOGLE_SEARCH_ENGINE_ID;
+
+        if (!API_KEY || !SEARCH_ENGINE_ID) {
+            return new Response('API credentials not configured on the server', { status: 500 });
+        }
+
+        const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${SEARCH_ENGINE_ID}&q=${encodeURIComponent(query)}`;
+
+        const apiResponse = await fetch(url);
+        const responseData = await apiResponse.json();
+
+        if (!apiResponse.ok) {
+            console.error('Google Search API Error:', responseData);
+            return new Response(JSON.stringify({ error: 'Failed to fetch search results' }), {
+                status: apiResponse.status,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
+        return new Response(JSON.stringify(responseData), {
+            headers: { 'Content-Type': 'application/json' },
+        });
+    } catch (error) {
+        console.error('Error in handleGoogleSearchRequest:', error);
+        return new Response(JSON.stringify({ error: 'Something went wrong' }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
+
 async function handleAiAssistantRequest(request, env) {
   if (request.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 });
@@ -643,6 +687,9 @@ export async function onRequest(context) {
     }
     if (path.startsWith('/api/gbif')) {
         return await handleGbifRequest(request, env);
+    }
+    if (path === '/api/google-search') {
+        return await handleGoogleSearchRequest(request, env);
     }
     if (path.startsWith('/api/uis/')) {
         return await handleUisRequest(request);

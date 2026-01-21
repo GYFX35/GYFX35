@@ -1,0 +1,25 @@
+/* AI & Digital Transformation specific styles */
+#results-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.result-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.result-item h3 {
+    margin-top: 0;
+}
+
+.result-item a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.result-item p {
+    color: #555;
+}
