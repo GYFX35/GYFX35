@@ -22,6 +22,7 @@ function createHeader() {
         { href: 'global-governments.html', text: 'Global Governments', ariaLabel: 'Navigate to Global Governments page' },
         { href: 'global-religions.html', text: 'Global Religions', ariaLabel: 'Navigate to Global Religions page' },
         { href: 'development.html', text: 'Development', ariaLabel: 'Navigate to Development page' },
+        { href: 'ai-digital-transformation.html', text: 'AI & Digital Transformation', ariaLabel: 'Navigate to AI & Digital Transformation page' },
         { href: 'solidarity.html', text: 'Solidarity', ariaLabel: 'Navigate to Solidarity page' },
         { href: 'projects.html', text: 'Projects', ariaLabel: 'Navigate to Projects page' },
         { href: 'world-bank.html', text: 'World Bank', ariaLabel: 'Navigate to World Bank page' },
