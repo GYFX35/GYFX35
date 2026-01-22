@@ -638,6 +638,58 @@ async function handleWhoRequest(request) {
 }
 
 
+async function handleCiscoRequest(request, env, api) {
+    const url = new URL(request.url);
+    const apiPath = url.pathname.replace(`/api/cisco/${api}/`, '');
+    const apiQuery = url.search;
+
+    let baseUrl, apiKey;
+    const headers = {
+        'Content-Type': 'application/json'
+    };
+
+    if (api === 'webex') {
+        baseUrl = 'https://webexapis.com/v1';
+        apiKey = env.CISCO_WEBEX_API_KEY;
+        if (apiKey) {
+            headers['Authorization'] = `Bearer ${apiKey}`;
+        }
+    } else if (api === 'meraki') {
+        baseUrl = 'https://api.meraki.com/api/v1';
+        apiKey = env.CISCO_MERAKI_API_KEY;
+        if (apiKey) {
+            headers['X-Cisco-Meraki-API-Key'] = apiKey;
+        }
+    } else {
+        return new Response('Invalid Cisco API specified', { status: 400 });
+    }
+
+    if (!apiKey) {
+        return new Response(`API key for Cisco ${api} not configured`, { status: 500 });
+    }
+
+    const ciscoApiUrl = `${baseUrl}/${apiPath}${apiQuery}`;
+
+    try {
+        const ciscoResponse = await fetch(ciscoApiUrl, {
+            headers: headers
+        });
+
+        const response = new Response(ciscoResponse.body, ciscoResponse);
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        response.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Cisco-Meraki-API-Key');
+
+        return response;
+    } catch (error) {
+        console.error(`Error fetching from Cisco ${api} API:`, error);
+        return new Response(JSON.stringify({ message: `Error proxying request to Cisco ${api} API`, error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
 async function handleUisRequest(request) {
     const url = new URL(request.url);
     // Proxying search requests to UIS API
@@ -696,6 +748,12 @@ export async function onRequest(context) {
     }
     if (path.startsWith('/api/who/')) {
         return await handleWhoRequest(request);
+    }
+    if (path.startsWith('/api/cisco/webex/')) {
+        return await handleCiscoRequest(request, env, 'webex');
+    }
+    if (path.startsWith('/api/cisco/meraki/')) {
+        return await handleCiscoRequest(request, env, 'meraki');
     }
     if (path === '/api/entrepreneurship') {
       return await handleEntrepreneurshipData(request, env);
