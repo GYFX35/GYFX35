@@ -1,0 +1,10 @@
+main {
+    padding: 2rem;
+}
+
+#webex-data, #meraki-data {
+    margin-top: 2rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 5px;
+}
