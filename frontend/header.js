@@ -26,7 +26,6 @@ function createHeader() {
         { href: 'solidarity.html', text: 'Solidarity', ariaLabel: 'Navigate to Solidarity page' },
         { href: 'projects.html', text: 'Projects', ariaLabel: 'Navigate to Projects page' },
         { href: 'world-bank.html', text: 'World Bank', ariaLabel: 'Navigate to World Bank page' },
-        { href: 'global-banks.html', text: 'Global Banks', ariaLabel: 'Navigate to Global Banks page' },
         { href: 'world-economy.html', text: 'World Economy', ariaLabel: 'Navigate to World Economy page' },
         { href: 'logistics.html', text: 'Logistics', ariaLabel: 'Navigate to Logistics page' },
         { href: 'transport-development.html', text: 'Transport Development', ariaLabel: 'Navigate to Transport Development page' },
@@ -54,7 +53,7 @@ function createHeader() {
         { href: 'who.html', text: 'WHO', ariaLabel: 'Navigate to WHO page' },
         { href: 'uis.html', text: 'UIS Data', ariaLabel: 'Navigate to UIS Data page' },
         { href: 'services.html', text: 'Public Services', ariaLabel: 'Navigate to Global Public Services and Assistance page' },
-        { href: 'mobile-operator.html', text: 'Mobile Operator', ariaLabel: 'Navigate to Mobile Operator page' },
+        { href: 'global-fintech.html', text: 'Global Fintech', ariaLabel: 'Navigate to Global Fintech page' },
         { href: 'dropshipping.html', text: 'Dropshipping', ariaLabel: 'Navigate to Dropshipping page' }
     ];
 
