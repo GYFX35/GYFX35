@@ -32,6 +32,7 @@ function createHeader() {
         { href: 'transport-development.html', text: 'Transport Development', ariaLabel: 'Navigate to Transport Development page' },
         { href: 'technologies-performance.html', text: 'Technologies Performance', ariaLabel: 'Navigate to Technologies Performance page' },
         { href: 'human-rights.html', text: 'Human Rights' },
+        { href: 'human-trafficking-prevention.html', text: 'Human Trafficking Prevention', ariaLabel: 'Navigate to Human Trafficking Prevention page' },
         { href: 'women-autonomy-entrepreneurship.html', text: 'Women Autonomy and Entrepreneurship', ariaLabel: 'Navigate to Women Autonomy and Entrepreneurship page' },
         { href: 'environment.html', text: 'Environment' },
         { href: 'biodiversity.html', text: 'Biodiversity', ariaLabel: 'Navigate to Biodiversity page' },
