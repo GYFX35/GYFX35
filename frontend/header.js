@@ -47,6 +47,7 @@ function createHeader() {
         { href: 'global-investment-finances-forum.html', text: 'Global Investment and Finances Forum', ariaLabel: 'Navigate to Global Investment and Finances Forum page' },
         { href: 'funding.html', text: 'Funding' },
         { href: 'entrepreneurship.html', text: 'EU Entrepreneurship', ariaLabel: 'Navigate to EU Entrepreneurship page' },
+        { href: 'con-valores-incubadora.html', text: 'Con Valores Incubadora', ariaLabel: 'Navigate to Con Valores Incubadora page' },
         { href: 'ai-assistant.html', text: 'AI Assistant', ariaLabel: 'Navigate to AI Assistant page' },
         { href: 'settings.html', text: 'Settings', ariaLabel: 'Navigate to Settings page' },
         { href: 'profile.html', text: 'Profile' },
