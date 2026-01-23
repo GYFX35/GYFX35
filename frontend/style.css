@@ -6,6 +6,9 @@
     color: white;
     padding: 8px;
     z-index: 100;
+    -webkit-transition: top 0.3s;
+    -moz-transition: top 0.3s;
+    -o-transition: top 0.3s;
     transition: top 0.3s;
 }
 
@@ -19,6 +22,8 @@ body {
     background-color: #f8f9fa;
     color: #2d3748;
     font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 header {
@@ -61,6 +66,9 @@ nav ul li a {
     text-decoration: none;
     color: #ffffff;
     font-weight: 600;
+    -webkit-transition: color 0.3s ease;
+    -moz-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
     transition: color 0.3s ease;
 }
 
@@ -100,7 +108,12 @@ nav ul li a:hover {
     padding: 1rem 2.5rem;
     text-decoration: none;
     font-weight: bold;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
     border-radius: 50px;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
     transition: background-color 0.3s ease;
 }
 
