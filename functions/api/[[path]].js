@@ -720,6 +720,35 @@ async function handleUisRequest(request) {
 }
 
 
+async function handleCvaloresRequest(request) {
+    const url = new URL(request.url);
+    // Proxying requests to cvalores.org API
+    const cvaloresApiUrl = `https://cvalores.org/wp-json/wp/v2${url.pathname.replace('/api/cvalores', '')}${url.search}`;
+
+    try {
+        const cvaloresResponse = await fetch(cvaloresApiUrl, {
+            headers: {
+                'User-Agent': 'GPW-Platform-Agent/1.0'
+            }
+        });
+
+        const response = new Response(cvaloresResponse.body, cvaloresResponse);
+
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        response.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+
+        return response;
+
+    } catch (error) {
+        console.error('Error fetching from cvalores API:', error);
+        return new Response(JSON.stringify({ message: 'Error proxying request to cvalores API', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -754,6 +783,9 @@ export async function onRequest(context) {
     }
     if (path.startsWith('/api/cisco/meraki/')) {
         return await handleCiscoRequest(request, env, 'meraki');
+    }
+    if (path.startsWith('/api/cvalores/')) {
+        return await handleCvaloresRequest(request);
     }
     if (path === '/api/entrepreneurship') {
       return await handleEntrepreneurshipData(request, env);

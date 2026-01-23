@@ -10,3 +10,4 @@ DEVELOPER_PAYMENTS.md
 
 # Ignore wrangler build artifacts
 .wrangler/
+*.png
