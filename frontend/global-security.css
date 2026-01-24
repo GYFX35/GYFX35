@@ -1,11 +1,21 @@
-#wanted-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+/* Styles for the Global Security page */
+
+#fbi-wanted-list .wanted-person {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
 }
 
-.wanted-person {
-    border: 1px solid #ccc;
-    padding: 20px;
+#fbi-wanted-list .wanted-person img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#cve-list .cve-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
     border-radius: 5px;
 }
