@@ -690,6 +690,42 @@ async function handleCiscoRequest(request, env, api) {
     }
 }
 
+async function handleCandidRequest(request, env) {
+    const url = new URL(request.url);
+    const apiPath = url.pathname.replace('/api/candid', '');
+    const apiQuery = url.search;
+    const candidApiUrl = `https://api.candid.org${apiPath}${apiQuery}`;
+
+    const apiKey = env.CANDID_API_KEY;
+    if (!apiKey) {
+        return new Response(JSON.stringify({ error: 'Candid API key not configured' }), {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+
+    try {
+        const candidResponse = await fetch(candidApiUrl, {
+            headers: {
+                'Ocp-Apim-Subscription-Key': apiKey,
+                'User-Agent': 'GPW-Platform-Agent/1.0'
+            }
+        });
+
+        const response = new Response(candidResponse.body, candidResponse);
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        response.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Ocp-Apim-Subscription-Key');
+        return response;
+    } catch (error) {
+        console.error('Error fetching from Candid API:', error);
+        return new Response(JSON.stringify({ message: 'Error proxying request to Candid API', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
 async function handleUisRequest(request) {
     const url = new URL(request.url);
     // Proxying search requests to UIS API
@@ -719,6 +755,42 @@ async function handleUisRequest(request) {
     }
 }
 
+
+async function handleIdealistRequest(request, env) {
+    const url = new URL(request.url);
+    const apiPath = url.pathname.replace('/api/idealist', '');
+    const apiQuery = url.search;
+    const idealistApiUrl = `https://www.idealist.org/api${apiPath}${apiQuery}`;
+
+    const apiKey = env.IDEALIST_API_KEY;
+    if (!apiKey) {
+        return new Response(JSON.stringify({ error: 'Idealist API key not configured' }), {
+            status: 401,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+
+    try {
+        const idealistResponse = await fetch(idealistApiUrl, {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': `Basic ${btoa(`${apiKey}:`)}`
+            }
+        });
+
+        const response = new Response(idealistResponse.body, idealistResponse);
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        response.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        return response;
+    } catch (error) {
+        console.error('Error fetching from Idealist API:', error);
+        return new Response(JSON.stringify({ message: 'Error proxying request to Idealist API', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
 
 async function handleCvaloresRequest(request) {
     const url = new URL(request.url);
@@ -769,6 +841,9 @@ export async function onRequest(context) {
     if (path.startsWith('/api/gbif')) {
         return await handleGbifRequest(request, env);
     }
+    if (path.startsWith('/api/candid/')) {
+        return await handleCandidRequest(request, env);
+    }
     if (path === '/api/google-search') {
         return await handleGoogleSearchRequest(request, env);
     }
@@ -783,6 +858,9 @@ export async function onRequest(context) {
     }
     if (path.startsWith('/api/cisco/meraki/')) {
         return await handleCiscoRequest(request, env, 'meraki');
+    }
+    if (path.startsWith('/api/idealist/')) {
+        return await handleIdealistRequest(request, env);
     }
     if (path.startsWith('/api/cvalores/')) {
         return await handleCvaloresRequest(request);
