@@ -50,6 +50,7 @@ function createHeader() {
         { href: 'funding.html', text: 'Funding' },
         { href: 'entrepreneurship.html', text: 'EU Entrepreneurship', ariaLabel: 'Navigate to EU Entrepreneurship page' },
         { href: 'con-valores-incubadora.html', text: 'Con Valores Incubadora', ariaLabel: 'Navigate to Con Valores Incubadora page' },
+        { href: 'oxfam.html', text: 'OXFAM', ariaLabel: 'Navigate to OXFAM page' },
         { href: 'ai-assistant.html', text: 'AI Assistant', ariaLabel: 'Navigate to AI Assistant page' },
         { href: 'settings.html', text: 'Settings', ariaLabel: 'Navigate to Settings page' },
         { href: 'profile.html', text: 'Profile' },
