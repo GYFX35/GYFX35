@@ -96,6 +96,13 @@ async function handleGoogleSearchRequest(request, env) {
     }
 }
 
+async function handleOxfamRequest(request, env) {
+  const oxfamData = await import('../../frontend/oxfam_data.json');
+  return new Response(JSON.stringify(oxfamData.default), {
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
 
 async function handleAiAssistantRequest(request, env) {
   if (request.method !== 'POST') {
@@ -864,6 +871,9 @@ export async function onRequest(context) {
     }
     if (path.startsWith('/api/cvalores/')) {
         return await handleCvaloresRequest(request);
+    }
+    if (path.startsWith('/api/oxfam')) {
+      return await handleOxfamRequest(request, env);
     }
     if (path === '/api/entrepreneurship') {
       return await handleEntrepreneurshipData(request, env);
