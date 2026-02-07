@@ -6,6 +6,7 @@
     <title>Environment Protection and Sustainable Agriculture - GPW</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="environment.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
@@ -18,21 +19,50 @@
             </div>
         </section>
 
+        <section id="unep-data" class="feature">
+            <h2>UNEP Environmental Indicators</h2>
+            <div class="feature-container">
+                <p>Data sourced from the UN SDG API, focusing on indicators custodied by the UN Environment Programme (UNEP).</p>
+                <div class="selector-group">
+                    <label for="country-select">Select a Country/Area:</label>
+                    <select id="country-select">
+                        <option value="">--Loading countries--</option>
+                    </select>
+                </div>
+                <div id="charts-container" class="chart-wrapper">
+                    <p class="placeholder-text">Please select a country to view environmental data trends.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="unep-news" class="feature">
+            <h2>Latest from UN Environment Programme</h2>
+            <div id="news-container" class="news-grid">
+                <p class="placeholder-text">Loading latest news and stories...</p>
+            </div>
+            <div class="more-link">
+                <a href="https://www.unep.org/news-and-stories" target="_blank" rel="noopener noreferrer">View more on unep.org</a>
+            </div>
+        </section>
+
         <section id="environment-protection" class="feature">
             <h2>Environment Protection</h2>
             <div class="feature-container">
-                </div>
+                <p>Learn about UNEP's global efforts in protecting our planet.</p>
+            </div>
         </section>
 
         <section id="sustainable-agriculture" class="feature">
             <h2>Sustainable Agriculture</h2>
             <div id="sustainable-agriculture-list">
+                <p>Promoting practices that ensure food security while preserving ecosystems.</p>
             </div>
         </section>
 
         <section id="forests-protection" class="feature">
             <h2>Forests Protection</h2>
             <div id="forests-protection-list">
+                <p>Conserving forests to mitigate climate change and protect biodiversity.</p>
             </div>
         </section>
     </main>
