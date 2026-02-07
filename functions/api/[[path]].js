@@ -828,6 +828,35 @@ async function handleCvaloresRequest(request) {
     }
 }
 
+async function handleUnepSdgRequest(request) {
+    const url = new URL(request.url);
+    // Proxying requests to UN SDG API as a source for UNEP-related environmental data
+    const sdgApiUrl = `https://unstats.un.org/SDGAPI/v1/sdg${url.pathname.replace('/api/unep/sdg', '')}${url.search}`;
+
+    try {
+        const sdgResponse = await fetch(sdgApiUrl, {
+            headers: {
+                'User-Agent': 'GPW-Platform-Agent/1.0'
+            }
+        });
+
+        const response = new Response(sdgResponse.body, sdgResponse);
+
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        response.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+
+        return response;
+
+    } catch (error) {
+        console.error('Error fetching from UN SDG API:', error);
+        return new Response(JSON.stringify({ message: 'Error proxying request to UN SDG API', error: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
+}
+
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -871,6 +900,9 @@ export async function onRequest(context) {
     }
     if (path.startsWith('/api/cvalores/')) {
         return await handleCvaloresRequest(request);
+    }
+    if (path.startsWith('/api/unep/sdg/')) {
+        return await handleUnepSdgRequest(request);
     }
     if (path.startsWith('/api/oxfam')) {
       return await handleOxfamRequest(request, env);
