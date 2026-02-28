@@ -57,6 +57,7 @@ function createHeader() {
         { href: 'global_education.html', text: 'Global Education', ariaLabel: 'Navigate to Global Education page' },
         { href: 'global-universities.html', text: 'Global Universities', ariaLabel: 'Navigate to Global Universities page' },
         { href: 'who.html', text: 'WHO', ariaLabel: 'Navigate to WHO page' },
+        { href: 'sexual-education.html', text: 'Sexual Education', ariaLabel: 'Navigate to Sexual Education page' },
         { href: 'uis.html', text: 'UIS Data', ariaLabel: 'Navigate to UIS Data page' },
         { href: 'services.html', text: 'Public Services', ariaLabel: 'Navigate to Global Public Services and Assistance page' },
         { href: 'mobile-operator.html', text: 'Mobile Operator', ariaLabel: 'Navigate to Mobile Operator page' },
