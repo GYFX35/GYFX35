@@ -1,0 +1,69 @@
+/* Styles for Sexual Education Promotion page */
+
+.content-section {
+    padding: 3rem 0;
+}
+
+.alternate-bg {
+    background-color: #f9f9f9;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card h4 {
+    margin-top: 0;
+    color: #0056b3;
+}
+
+.data-visualization {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+#country-select {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#charts-container {
+    width: 100%;
+    min-height: 400px;
+    margin-top: 1rem;
+}
+
+.prevention-tips {
+    margin-top: 2rem;
+    background: #e9f7fe;
+    padding: 1.5rem;
+    border-left: 5px solid #0056b3;
+    border-radius: 4px;
+}
+
+.prevention-tips h4 {
+    margin-top: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
