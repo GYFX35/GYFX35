@@ -61,7 +61,10 @@ function createHeader() {
         { href: 'uis.html', text: 'UIS Data', ariaLabel: 'Navigate to UIS Data page' },
         { href: 'services.html', text: 'Public Services', ariaLabel: 'Navigate to Global Public Services and Assistance page' },
         { href: 'mobile-operator.html', text: 'Mobile Operator', ariaLabel: 'Navigate to Mobile Operator page' },
-        { href: 'dropshipping.html', text: 'Dropshipping', ariaLabel: 'Navigate to Dropshipping page' }
+        { href: 'dropshipping.html', text: 'Dropshipping', ariaLabel: 'Navigate to Dropshipping page' },
+        { href: 'children-health-promotion.html', text: 'Children Health Promotion', ariaLabel: 'Navigate to Children Health Promotion page' },
+        { href: 'sexual-abuse-eradication.html', text: 'Sexual Abuse Eradication', ariaLabel: 'Navigate to Sexual Abuse Eradication page' },
+        { href: 'poor-family-support.html', text: 'Poor Family Support', ariaLabel: 'Navigate to Poor Family Support page' }
     ];
 
     navItems.forEach(item => {
