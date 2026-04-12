@@ -59,7 +59,22 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-    margin-left: 2.5rem;
+    margin-left: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    header {
+        position: static;
+        background-color: #1a202c;
+    }
+    nav {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 0.5rem 0;
+        display: block;
+        text-align: center;
+    }
 }
 
 nav ul li a {
@@ -132,6 +147,36 @@ nav ul li a:hover {
 
 .feature:last-of-type {
     border-bottom: none;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #2d3748;
+    font-weight: 600;
+    min-width: 150px;
+    -webkit-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -moz-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -o-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    color: #17a2b8;
 }
 
 .feature h2 {
