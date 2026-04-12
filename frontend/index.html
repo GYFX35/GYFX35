@@ -17,36 +17,88 @@
             <div class="hero-content">
                 <h1>Building a Better World Together</h1>
                 <p>A platform dedicated to fostering global peace, empowering youth, and promoting wellbeing for all.</p>
-                <a href="#" class="cta-button">Join the Movement</a>
-                <a href="funding.html" class="cta-button">Donate</a>
+                <div class="hero-buttons">
+                    <a href="#explore" class="cta-button">Explore Our Work</a>
+                    <a href="funding.html" class="cta-button secondary">Donate Now</a>
+                </div>
             </div>
         </section>
 
-        <section id="peace" class="feature">
-            <h2>Peace & Stability</h2>
-            <p>Promoting dialogue, understanding, and collaboration to build a more peaceful and stable world.</p>
+        <section id="explore" class="features-grid">
+            <div class="section-title">
+                <h2>Our Core Pillars</h2>
+                <p>Focusing on the most critical areas for global progress.</p>
+            </div>
+            <div class="grid-container">
+                <div class="card" id="peace">
+                    <div class="card-icon">🕊️</div>
+                    <h3>Peace & Stability</h3>
+                    <p>Promoting dialogue and collaboration to build a more peaceful world.</p>
+                    <a href="index.html#peace" class="card-link">Learn More</a>
+                </div>
+                <div class="card" id="youth">
+                    <div class="card-icon">🚀</div>
+                    <h3>Youth Entrepreneurship</h3>
+                    <p>Empowering the next generation of leaders and innovators.</p>
+                    <a href="index.html#youth" class="card-link">Learn More</a>
+                </div>
+                <div class="card" id="wellbeing">
+                    <div class="card-icon">🌱</div>
+                    <h3>Wellbeing Promotion</h3>
+                    <p>Cultivating a culture of physical, mental, and social wellbeing.</p>
+                    <a href="index.html#wellbeing" class="card-link">Learn More</a>
+                </div>
+            </div>
         </section>
 
-        <section id="youth" class="feature">
-            <h2>Youth Entrepreneurship & Employment</h2>
-            <p>Empowering the next generation of leaders and innovators with the skills and resources they need to succeed.</p>
+        <section class="modules-section">
+            <div class="section-title">
+                <h2>Global Initiatives</h2>
+                <p>Connecting with organizations and data across the globe.</p>
+            </div>
+            <div class="modules-grid">
+                <a href="global-governments.html" class="module-card">
+                    <h3>Governments</h3>
+                    <p>Fostering inter-governmental collaboration.</p>
+                </a>
+                <a href="global-ngos.html" class="module-card">
+                    <h3>NGOs</h3>
+                    <p>Connecting with non-profit organizations.</p>
+                </a>
+                <a href="global-security.html" class="module-card">
+                    <h3>Security</h3>
+                    <p>Global safety and information sharing.</p>
+                </a>
+                <a href="world-bank.html" class="module-card">
+                    <h3>World Bank</h3>
+                    <p>Accessing global economic data.</p>
+                </a>
+                <a href="who.html" class="module-card">
+                    <h3>WHO</h3>
+                    <p>Health indicators and global wellness.</p>
+                </a>
+                <a href="ai-assistant.html" class="module-card">
+                    <h3>AI Assistant</h3>
+                    <p>Expert guidance powered by Gemini.</p>
+                </a>
+            </div>
+            <div class="view-all">
+                <a href="projects.html" class="text-link">View All Projects & Initiatives &rarr;</a>
+            </div>
         </section>
 
-        <section id="wellbeing" class="feature">
-            <h2>Wellbeing Promotion</h2>
-            <p>Cultivating a culture of physical, mental, and social wellbeing for individuals and communities worldwide.</p>
-        </section>
-
-        <section id="feedback" class="feature">
-            <h2>Get Feedback on Your Business Idea</h2>
-            <form id="feedback-form">
-                <textarea id="idea-input" placeholder="Describe your business idea..."></textarea>
-                <button id="feedback-submit">Get Feedback</button>
-            </form>
-            <div id="feedback-response"></div>
+        <section id="feedback" class="feedback-section">
+            <div class="feedback-container">
+                <h2>Get AI Feedback on Your Idea</h2>
+                <p>Describe your business or social project idea and let our AI provide insights.</p>
+                <form id="feedback-form">
+                    <textarea id="idea-input" placeholder="Describe your idea here..."></textarea>
+                    <button id="feedback-submit" type="submit">Get Expert Feedback</button>
+                </form>
+                <div id="feedback-response"></div>
+            </div>
         </section>
     </main>
-
 
     <script src="header.js"></script>
     <script src="script.js"></script>
