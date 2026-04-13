@@ -63,5 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initial greeting from the assistant
-    displayMessage('assistant', 'Hello! I am your AI Business Advisor and Strategist. How can I help you today with strategic planning, entrepreneurship, or global impact initiatives?');
+    displayMessage('assistant', 'Hello! I am your AI assistant. How can I help you today with strategic planning, marketing, education, machine learning, medical consulting, or global impact initiatives?');
 });
