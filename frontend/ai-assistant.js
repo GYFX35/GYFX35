@@ -63,5 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initial greeting from the assistant
-    displayMessage('assistant', 'Hello! How can I help you today with Global Peace, Youth Entrepreneurship, or Wellbeing?');
+    displayMessage('assistant', 'Hello! How can I help you today with Global Peace, Youth Entrepreneurship, Wellbeing, or content creation like images, videos, and logos?');
 });
