@@ -19,7 +19,7 @@ const navItems = [
   { name: 'Governments', icon: Globe, path: '../global-governments.html', category: 'Partners' },
   { name: 'NGOs', icon: Users, path: '../global-ngos.html', category: 'Partners' },
   { name: 'Security', icon: Shield, path: '../global-security.html', category: 'Safety' },
-  { name: 'AI Assistant', icon: Cpu, path: '../ai-assistant.html', category: 'Tools' },
+  { name: 'AI Advisor', icon: Briefcase, path: '../ai-assistant.html', category: 'Tools' },
   { name: 'Funding', icon: DollarSign, path: '../funding.html', category: 'Tools' },
   { name: 'WHO Data', icon: Heart, path: '../who.html', category: 'Data' },
   { name: 'World Bank', icon: Briefcase, path: '../world-bank.html', category: 'Data' },
