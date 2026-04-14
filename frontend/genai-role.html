@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative AI Role - GPW Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ai-assistant.css">
+    <style>
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+
+    <main id="main-content">
+        <section id="genai-role-container">
+            <h1>Generative AI Role</h1>
+            <p>Empowering global peace and wellbeing through advanced Artificial Intelligence.</p>
+
+            <div class="feature-card">
+                <h2>Our Generative AI Capabilities</h2>
+                <p>We leverage Google's state-of-the-art Gemini models to provide expert guidance on business strategy, education, and global development.</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>Google Python SDK for GenAI</h2>
+                <p>Learn how we use the Google Python SDK to build intelligent tools. Below is an example of how to interact with the Gemini API using Python:</p>
+                <div class="code-block">
+                    <pre>
+import google.generativeai as genai
+import os
+
+genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+model = genai.GenerativeModel('gemini-1.5-flash')
+
+response = model.generate_content("How can AI help in global peace?")
+print(response.text)
+                    </pre>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h2>Try the GenAI Assistant</h2>
+                <div id="chat-window">
+                    <div id="message-display"></div>
+                    <div id="loading-indicator" style="display: none;">Thinking...</div>
+                </div>
+                <form id="chat-form">
+                    <input type="text" id="message-input" placeholder="Ask about AI, Google APIs, or Python..." autocomplete="off">
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+    <script src="ai-assistant.js"></script>
+    <script src="../shared/footer.js"></script>
+</body>
+</html>
