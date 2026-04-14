@@ -78,3 +78,12 @@
 #chat-form button:hover {
     background-color: #218838;
 }
+
+.code-block {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}

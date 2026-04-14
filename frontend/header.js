@@ -23,7 +23,7 @@ function createHeader() {
         { href: 'global-ngos.html', text: 'NGOs', ariaLabel: 'Global NGO Initiatives' },
         { href: 'global-security.html', text: 'Security', ariaLabel: 'Global Security Initiatives' },
         { href: 'ai-assistant.html', text: 'AI Assistant', ariaLabel: 'AI Assistant' },
-        { href: 'genai-role.html', text: 'GenAI', ariaLabel: 'Generative AI Role' },
+        { href: 'genai-role.html', text: 'GenAI Role', ariaLabel: 'Generative AI Role' },
         { href: 'codex/index.html', text: 'Codex', ariaLabel: 'Global Navigation Codex' },
         { href: 'funding.html', text: 'Donate', ariaLabel: 'Support our projects' }
     ];

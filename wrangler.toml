@@ -7,8 +7,6 @@ LOCATION = "us-central1"
 MODEL_ID = "gemini-1.0-pro-001"
 YOUTUBE_PLAYLIST_ID = "PLrD7_d5Wv_AASd184IOK8ObrA6M0DbmWH"
 
-[pages]
-main = "frontend"
 
 [[d1_databases]]
 binding = "DB"
